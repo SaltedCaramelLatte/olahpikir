@@ -1,3 +1,58 @@
+# Penjelasan Struktur dan Fungsinya
+
+### public/
+Folder ini menyimpan favicon atau aset umum lainnya yang tidak dimodifikasi oleh proses build.
+
+### src/assets/
+Menyimpan gambar atau file CSS yang bisa digunakan di seluruh aplikasi, seperti `globals.css` untuk styling tambahan di luar Tailwind.
+
+### src/components/
+Menyimpan komponen-komponen **reusable** yang umum, seperti `Button`, `Navbar`, `Footer`, serta komponen khusus seperti `EventCard` dan `TestimonialCard` untuk menampilkan informasi acara dan testimoni.
+
+### src/context/
+Menyimpan konteks global seperti `ThemeContext` untuk mengelola **dark mode** di seluruh aplikasi.
+
+### src/hooks/
+Menyimpan custom hooks seperti `useDarkMode` untuk logika dark mode yang bisa digunakan di beberapa komponen.
+
+### src/layouts/
+Berisi layout utama aplikasi, seperti `MainLayout`, yang mengatur struktur dasar halaman dengan komponen `Navbar` dan `Footer`.
+
+### src/pages/
+Folder ini berisi file halaman untuk **navigasi utama**:
+
+- **Home.tsx**: Halaman utama yang menampilkan `HeroSection`, `MenuSection`, `EventCalendarSection`, dan `TestimonialSection`.
+- **Events.tsx**: Halaman untuk kalender acara mahasiswa, menampilkan semua event yang akan datang.
+- **Menu.tsx**: Halaman yang menampilkan daftar menu lengkap.
+- **About.tsx**: Halaman dengan informasi lebih mendalam tentang kedai kopi.
+- **Contact.tsx**: Halaman kontak dengan informasi untuk reservasi acara atau menghubungi kedai.
+
+### src/sections/
+Bagian modular dari halaman yang dapat digunakan di berbagai halaman.
+
+- **HeroSection.tsx**: Section utama atau banner dengan pesan selamat datang.
+- **AboutSection.tsx**: Tentang kedai, termasuk misi dan tujuan.
+- **MenuSection.tsx**: Menampilkan menu populer atau promo khusus.
+- **EventCalendarSection.tsx**: Kalender acara mahasiswa yang bisa ditampilkan di halaman Home atau Events.
+- **TestimonialSection.tsx**: Menampilkan testimoni atau review mahasiswa.
+- **ReservationSection.tsx**: Kontak untuk reservasi, dengan link ke WhatsApp atau media sosial.
+
+### src/types/
+Menyimpan tipe atau antarmuka TypeScript, seperti `event.d.ts` yang mendefinisikan tipe untuk data acara atau testimoni.
+
+### src/utils/
+Menyimpan fungsi-fungsi utilitas atau konstanta yang sering digunakan di seluruh aplikasi, seperti **konstanta warna tema** atau **informasi kontak**.
+
+### App.tsx
+Komponen utama yang merender layout dan mengelola **routing** di aplikasi.
+
+### main.tsx
+Entry point untuk aplikasi React yang merender `App.tsx`.
+
+### index.css
+File utama untuk **Tailwind CSS** yang mengimpor direktif Tailwind (`@tailwind base;`, `@tailwind components;`, dan `@tailwind utilities;`).
+
+
 ```md
 my-nextui-project/
 ├── public/
