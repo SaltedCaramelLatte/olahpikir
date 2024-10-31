@@ -7,7 +7,7 @@ export default {
     './index.html',
     './src/**/*.{js,ts,jsx,tsx}',
   ],
-  
+
   theme: {
     extend: {
       fontFamily: {
@@ -15,21 +15,27 @@ export default {
         bossa: ['Bossa', 'Figtree', ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        primary: '#FFD73B',
-        secondary: '#1a1a2e',
-      },
-      backgroundColor: {
-        dark: '#1a1a2e',   // Background utama untuk dark mode
-        light: '#ffffff',   // Background utama untuk light mode
-      },
-      textColor: {
-        dark: '#e0e0e0',    // Warna teks untuk dark mode
-        light: '#000000',    // Warna teks untuk light mode
+        light: {
+          primary: '#FFD73B',
+          secondary: '#1a1a2e',
+          background: '#ffffff',
+          text: '#333333',
+          accent: '#FF6B6B',
+          border: '#E0E0E0',
+        },
+        dark: {
+          primary: '#FFD73B',
+          secondary: '#F2F2F2',
+          background: '#1a1a2e',
+          text: '#e0e0e0',
+          accent: '#FF6B6B',
+          border: '#333333',
+        },
       },
     },
   },
-  darkMode: 'class', // Menggunakan class untuk mengaktifkan dark mode
+  darkMode: 'class',
   plugins: [
-    typography,  // Menambahkan plugin typography dari Tailwind
+    typography,
   ],
 };
