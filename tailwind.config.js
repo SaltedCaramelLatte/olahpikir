@@ -1,11 +1,13 @@
-import defaultTheme from 'tailwindcss/defaultTheme';
-import typography from '@tailwindcss/typography';
+// import { nextui } from '@nextui-org/react'
+import defaultTheme from 'tailwindcss/defaultTheme'
+import typography from '@tailwindcss/typography'
 
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    './index.html',
-    './src/**/*.{js,ts,jsx,tsx}',
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    // "./node_modules/@nextui-org/theme/dist/components/(button|tabs|ripple|spinner).js"
   ],
 
   theme: {

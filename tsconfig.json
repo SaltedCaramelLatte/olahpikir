@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "isolatedModules": true,
+    "target": "ESNext",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "ziggy-js": ["./vendor/tightenco/ziggy"]
+    },
+    "types": ["cypress", "node"]
+  },
+  "include": [
+    "src/**/*" // Menyertakan semua file dalam src, lebih umum
+  ],
+  "exclude": ["node_modules"]
+}
