@@ -1,144 +1,76 @@
+import React, { useState } from 'react';
 import {
-    Button,
-    Dropdown,
-    DropdownItem,
-    DropdownMenu,
-    DropdownTrigger,
-    Link,
-    Navbar as NavbarBase,
-    NavbarBrand,
-    NavbarContent,
-    NavbarItem,
-    NavbarMenu,
-    NavbarMenuItem,
-    NavbarMenuToggle,
-    User,
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  Link,
+  Dropdown,
+  DropdownItem,
+  DropdownTrigger,
+  DropdownMenu,
 } from "@nextui-org/react";
+import coffeeImage from "@/images/coffee.jpg";
+import { FaBars, FaTimes } from "react-icons/fa";
 
-const menuItems = [
-    { label: "Beranda", url: "/home" },
-    { label: "Program", url: "/program" },
-    { label: "Butuh Bantuan?", url: "/help" },
-];
+export default function AppNavbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-const Navbar = () => {
-    const user = {
-        name: "User Name",
-        email: "user@example.com",
-    }; // Contoh data pengguna
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
-    return (
-        <NavbarBase
-            shouldHideOnScroll
-            className="bg-light-background dark:bg-dark-background border-b border-light-border dark:border-dark-border"
-            classNames={{
-                item: [
-                    'data-[active="true"]:font-bold text-light-text dark:text-dark-text',
-                    'data-[active="true"]:border-b-2 border-primary',
-                ],
-            }}
-        >
-            {/* Logo Brand */}
-            <NavbarBrand>
-                <a href="/home">
-                    <img
-                        src="/assets/images/mbkm.png"
-                        alt="Nama Aplikasi"
-                        className="h-10"
-                    />
-                </a>
-            </NavbarBrand>
+  return (
+    <Navbar className="bg-light-background dark:bg-dark-background border-b border-light-border dark:border-dark-border">
+      <NavbarBrand>
+        <img src={coffeeImage} alt="Logo" className="h-10 mr-2" />
+        <p className="font-bold text-primary dark:text-primary">Kedai Kopi</p>
+      </NavbarBrand>
 
-            {/* Menu Utama - Desktop */}
-            <NavbarContent className="hidden sm:flex gap-4" justify="center">
-                {menuItems.map((item, index) => (
-                    <NavbarItem key={index}>
-                        <Link
-                            href={item.url}
-                            className="text-light-text dark:text-dark-text hover:text-primary dark:hover:text-primary"
-                        >
-                            {item.label}
-                        </Link>
-                    </NavbarItem>
-                ))}
-            </NavbarContent>
+      {/* Menu Utama - Desktop */}
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        <NavbarItem>
+          <Link color="foreground" href="#" className="text-light-text dark:text-dark-text hover:text-primary dark:hover:text-primary">
+            Features
+          </Link>
+        </NavbarItem>
+        <NavbarItem isActive>
+          <Link href="#" aria-current="page" color="secondary" className="text-primary dark:text-primary font-semibold">
+            Customers
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="#" className="text-light-text dark:text-dark-text hover:text-primary dark:hover:text-primary">
+            Integrations
+          </Link>
+        </NavbarItem>
+      </NavbarContent>
 
-            {/* Konten Akhir - Desktop */}
-            <NavbarContent justify="end" className="hidden sm:flex">
-                <NavbarItem>
-                    {user ? (
-                        <Dropdown>
-                            <DropdownTrigger>
-                                <User
-                                    classNames={{
-                                        base: "cursor-pointer text-light-text dark:text-dark-text",
-                                    }}
-                                    name={user.name}
-                                    description={user.email}
-                                />
-                            </DropdownTrigger>
-                            <DropdownMenu variant="faded" aria-label="Dropdown menu with description">
-                                <DropdownItem href="/dashboard" className="text-light-text dark:text-dark-text hover:text-primary">
-                                    Kegiatanku
-                                </DropdownItem>
-                            </DropdownMenu>
-                        </Dropdown>
-                    ) : (
-                        <a href="/login" className="inline-block">
-                            <Button
-                                color="default"
-                                variant="bordered"
-                                className="border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:text-primary hover:border-primary dark:hover:text-primary"
-                            >
-                                Login
-                            </Button>
-                        </a>
-                    )}
-                </NavbarItem>
-            </NavbarContent>
-
-            {/* Menu Toggle - Mobile */}
-            <NavbarMenuToggle className="sm:hidden text-light-text dark:text-dark-text" />
-
-            {/* Menu untuk Tampilan Mobile */}
-            <NavbarMenu className="bg-light-background dark:bg-dark-background">
-                {menuItems.map((item, index) => (
-                    <NavbarMenuItem key={`${item.label}-${index}`}>
-                        <Button color="primary" variant="flat" className="w-full">
-                            <a href={item.url} className="text-light-text dark:text-dark-text hover:text-primary dark:hover:text-primary w-full inline-block">
-                                {item.label}
-                            </a>
-                        </Button>
-                    </NavbarMenuItem>
-                ))}
-                {user ? (
-                    <NavbarMenuItem>
-                        <a href="/dashboard" className="w-full inline-block">
-                            <Button
-                                color="default"
-                                variant="bordered"
-                                className="border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:text-primary hover:border-primary dark:hover:text-primary w-full"
-                            >
-                                Kegiatanku
-                            </Button>
-                        </a>
-                    </NavbarMenuItem>
-                ) : (
-                    <NavbarMenuItem>
-                        <a href="/login" className="w-full inline-block">
-                            <Button
-                                color="default"
-                                variant="bordered"
-                                className="border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:text-primary hover:border-primary dark:hover:text-primary w-full"
-                            >
-                                Login
-                            </Button>
-                        </a>
-                    </NavbarMenuItem>
-                )}
-            </NavbarMenu>
-        </NavbarBase>
-    );
-};
-
-export default Navbar;
+      {/* Konten Akhir - Profil User */}
+      <NavbarContent as="div" justify="end">
+        <Dropdown placement="bottom-end">
+          <DropdownTrigger>
+            <button onClick={toggleMenu} className="p-2 text-secondary transition-transform">
+              {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            </button>
+          </DropdownTrigger>
+          <DropdownMenu aria-label="Profile Actions" variant="flat" className="bg-light-background dark:bg-dark-background">
+            <DropdownItem key="profile" className="h-14 gap-2 text-light-text dark:text-dark-text">
+              <p className="font-semibold">Signed in as</p>
+              <p className="font-semibold">zoey@example.com</p>
+            </DropdownItem>
+            <DropdownItem key="settings" className="text-light-text dark:text-dark-text">My Settings</DropdownItem>
+            <DropdownItem key="team_settings" className="text-light-text dark:text-dark-text">Team Settings</DropdownItem>
+            <DropdownItem key="analytics" className="text-light-text dark:text-dark-text">Analytics</DropdownItem>
+            <DropdownItem key="system" className="text-light-text dark:text-dark-text">System</DropdownItem>
+            <DropdownItem key="configurations" className="text-light-text dark:text-dark-text">Configurations</DropdownItem>
+            <DropdownItem key="help_and_feedback" className="text-light-text dark:text-dark-text">Help & Feedback</DropdownItem>
+            <DropdownItem key="logout" color="danger" className="text-red-500 dark:text-red-400">
+              Log Out
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+      </NavbarContent>
+    </Navbar>
+  );
+}

@@ -1,12 +1,12 @@
-import { Card, CardBody, Image, Divider } from "@nextui-org/react";
+import { Card, CardBody, Divider } from "@nextui-org/react";
 import ThemeToggle from "./ThemeToggle";
 
 const Footer = () => {
     // Fallback data kontak
     const footer = {
-        contact_email: "contact@stikes-gunungsari.ac.id",
+        contact_email: "olahpikicafe@gmail.com",
         contact_phone: "+62 123 4567 890",
-        contact_address: "Jl. Merdeka No.123, Gunung Sari, Indonesia",
+        contact_address: "Jl. Bumi 2, Gn. Sari, Kec. Rappocini, Kota Makassar, Sulawesi Selatan 90221",
     };
     const currentYear = new Date().getFullYear();
 
@@ -22,7 +22,6 @@ const Footer = () => {
                 <CardBody>
                     <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center">
                         <div className="relative col-span-6 md:col-span-4">
-                            {/* Placeholder untuk Logo */}
                             <div className="bg-gray-200 dark:bg-gray-700 w-full h-40 flex items-center justify-center rounded-lg">
                                 <span className="text-gray-500 dark:text-gray-300">Logo Placeholder</span>
                             </div>
@@ -30,9 +29,6 @@ const Footer = () => {
                         <div className="flex flex-col col-span-6 md:col-span-8">
                             <div className="flex justify-between items-start">
                                 <div className="flex flex-col gap-0">
-                                    <h3 className="font-semibold text-foreground/90 uppercase tracking-wide text-sm text-indigo-500 dark:text-indigo-300">
-                                        Program Kampus Merdeka STIKES Gunung Sari
-                                    </h3>
                                     <p className="text-lg font-medium mt-2 text-black dark:text-white">
                                         Email: <a href={`mailto:${footer.contact_email}`} className="text-blue-400 dark:text-blue-300 hover:underline">{footer.contact_email}</a>
                                     </p>
