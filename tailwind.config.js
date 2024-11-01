@@ -7,7 +7,7 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    // "./node_modules/@nextui-org/theme/dist/components/(button|tabs|ripple|spinner).js"
+    "./node_modules/@nextui-org/theme/dist/components/(button|tabs|ripple|spinner).js"
   ],
 
   theme: {
