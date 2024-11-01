@@ -1,5 +1,5 @@
 import { Button, Image, } from '@nextui-org/react';
-import coffeeImage from '@/images/coffee.jpg'; // Ganti dengan gambar kopi yang sesuai
+import coffeeImage from "@/images/coffee.jpg";
 
 const HeroSection = () => {
     return (
