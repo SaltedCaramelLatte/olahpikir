@@ -1,10 +1,11 @@
-// src/pages/Home.tsx
 import HeroSection from '@/components/home/HeroSections';
+import Footer from '@/components/Footer'; // Pastikan path ini benar
 
 const Home = () => {
   return (
     <div>
       <HeroSection />
+      <Footer /> {/* Memanggil Footer di bawah HeroSection */}
     </div>
   );
 };
