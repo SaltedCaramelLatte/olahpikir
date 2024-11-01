@@ -102,12 +102,12 @@ const MenuSection = () => {
             <h2 className="text-4xl font-bold text-primary mb-8">Our Menu</h2>
 
             <h3 className="text-2xl font-semibold text-primary mb-4">Coffee</h3>
-            <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-8">
+            <div className="gap-4 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 mb-8">
                 {renderMenuItems(coffeeList, 0)}
             </div>
 
             <h3 className="text-2xl font-semibold text-primary mb-4">Non-Coffee</h3>
-            <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="gap-4 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3">
                 {renderMenuItems(nonCoffeeList, coffeeList.length)}
             </div>
         </section>
