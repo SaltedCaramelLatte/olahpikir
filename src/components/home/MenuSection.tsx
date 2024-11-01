@@ -1,4 +1,4 @@
-import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
+import { Card, CardBody, CardFooter, Image, Spacer } from "@nextui-org/react";
 import { useEffect, useRef, useState } from "react";
 
 const MenuSection = () => {
@@ -67,7 +67,7 @@ const MenuSection = () => {
                         shadow="lg"
                         isPressable
                         radius="lg"
-                        className="rounded-xl hover:scale-105 transition-transform bg-gray-50 dark:bg-gray-800 overflow-hidden w-[200px] h-[400px]"
+                        className="rounded-xl hover:scale-105 transition-transform bg-gray-50 dark:bg-gray-800 overflow-hidden w-[150px] h-[300px]"
                         onPress={() => console.log(`${item.title} pressed`)}
                     >
 
@@ -102,12 +102,12 @@ const MenuSection = () => {
             <h2 className="text-4xl font-bold text-primary mb-8">Our Menu</h2>
 
             <h3 className="text-2xl font-semibold text-primary mb-4">Coffee</h3>
-            <div className="gap-4 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 mb-8">
+            <div className="gap-4 lg:gap-8 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3">
                 {renderMenuItems(coffeeList, 0)}
             </div>
-
+            <Spacer y={10} />
             <h3 className="text-2xl font-semibold text-primary mb-4">Non-Coffee</h3>
-            <div className="gap-4 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="gap-4 lg:gap-8 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3">
                 {renderMenuItems(nonCoffeeList, coffeeList.length)}
             </div>
         </section>
