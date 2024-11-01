@@ -11,7 +11,7 @@ import {
   DropdownMenu,
   Button,
 } from "@nextui-org/react";
-import coffeeImage from "@/images/coffee.jpg";
+// import coffeeImage from "@/images/coffee.jpg";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 interface NavbarItemLinkProps {
@@ -44,7 +44,7 @@ export default function AppNavbar() {
       style={{ height: '60px' }}
     >
       <NavbarBrand>
-        <img src={coffeeImage} alt="Logo" className="h-10 mr-2" />
+        {/* <img src={coffeeImage} alt="Logo" className="h-10 mr-2" /> */}
         <p className="font-bold text-primary dark:text-primary">Kedai Kopi</p>
       </NavbarBrand>
 
