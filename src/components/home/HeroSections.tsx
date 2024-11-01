@@ -1,33 +1,35 @@
-import { Button } from '@nextui-org/react';
-import backgroundImage from '@/images/background.jpg';
+import { Button, Image, } from '@nextui-org/react';
+import coffeeImage from '@/images/coffee.jpg'; // Ganti dengan gambar kopi yang sesuai
 
 const HeroSection = () => {
     return (
-        <section className="relative flex flex-col items-center justify-center min-h-screen bg-cover bg-center bg-no-repeat py-10 px-4 sm:px-6 lg:px-8"
-            style={{ backgroundImage: `url(${backgroundImage})` }}>
-            {/* Overlay for better text visibility */}
-            <div className="absolute inset-0 bg-black opacity-40"></div>
-
-            {/* Content Wrapper */}
-            <div className="relative z-10 max-w-3xl text-center text-white p-6 bg-opacity-75 bg-light-background dark:bg-dark-background rounded-md shadow-lg">
-                <h1 className="text-3xl font-bold font-bossa sm:text-4xl lg:text-5xl mb-4">
-                    Selamat Datang di Kedai Kopi Mahasiswa
+        <section className="relative flex flex-col md:flex-row items-center justify-center min-h-screen bg-light-background dark:bg-dark-background py-10 px-4 sm:px-6 lg:px-8">
+            {/* Konten Teks */}
+            <div className="flex flex-col items-start md:w-1/2 max-w-lg text-left md:ml-10">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-bossa text-primary mb-4 leading-tight">
+                    Janji Jiwa
                 </h1>
-                <p className="text-base sm:text-lg md:text-xl text-light-secondary dark:text-dark-secondary mb-6">
-                    Tempat yang nyaman untuk belajar, bersantai, dan berkreasi bersama
-                    teman-teman. Dapatkan pengalaman unik dengan kopi khas kami dan
-                    dukungan acara mahasiswa yang seru!
+                <p className="text-xl sm:text-2xl text-dark-secondary dark:text-light-secondary mb-6">
+                    Kopi Dari Hati untuk Teman Sejiwa.
                 </p>
+                <Button
+                    color="warning"
+                    size="lg"
+                    className="bg-primary text-dark-background dark:text-light-background rounded-md shadow-md hover:bg-opacity-90 transition"
+                >
+                    Lihat Menu
+                </Button>
+            </div>
 
-                {/* Button Group */}
-                <div className="flex justify-center space-x-4">
-                    <Button className="bg-primary text-light-background dark:text-dark-background rounded-md shadow-md hover:bg-opacity-90 transition">
-                        Lihat Menu
-                    </Button>
-                    <Button className="bg-primary text-light-background dark:text-dark-background rounded-md shadow-md hover:bg-opacity-90 transition">
-                        Reservasi Sekarang
-                    </Button>
-                </div>
+            {/* Gambar Produk */}
+            <div className="relative md:w-1/2 flex justify-center mt-8 md:mt-0 md:mr-10">
+                <Image
+                    src={coffeeImage}
+                    alt="Gelas kopi"
+                    className="object-contain"
+                    width={500}
+                    height={500}
+                />
             </div>
         </section>
     );
