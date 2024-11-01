@@ -7,10 +7,10 @@ const HeroSection = () => {
             {/* Konten Teks */}
             <div className="flex flex-col items-start md:w-1/2 max-w-lg text-left md:ml-10">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-bossa text-primary mb-4 leading-tight">
-                    Janji Jiwa
+                    olahpikir Cafe
                 </h1>
                 <p className="text-xl sm:text-2xl text-dark-secondary dark:text-light-secondary mb-6">
-                    Kopi Dari Hati untuk Teman Sejiwa.
+                Nikmati berbagai varian kopi yang kami sajikan dengan penuh cinta dan dedikasi.
                 </p>
                 <Button
                     color="warning"
