@@ -13,9 +13,21 @@ const MenuSection = () => {
         { title: "Espresso", img: "/images/coffee-1.jpeg", price: "$4.00" },
         { title: "Latte", img: "/images/coffee-2.jpeg", price: "$5.00" },
         { title: "Cappuccino", img: "/images/coffee-3.jpeg", price: "$5.50" },
+        { title: "Espresso", img: "/images/coffee-1.jpeg", price: "$4.00" },
+        { title: "Latte", img: "/images/coffee-2.jpeg", price: "$5.00" },
+        { title: "Cappuccino", img: "/images/coffee-3.jpeg", price: "$5.50" },
+        { title: "Espresso", img: "/images/coffee-1.jpeg", price: "$4.00" },
+        { title: "Latte", img: "/images/coffee-2.jpeg", price: "$5.00" },
+        { title: "Cappuccino", img: "/images/coffee-3.jpeg", price: "$5.50" },
     ];
 
     const nonCoffeeList: MenuItemType[] = [
+        { title: "Orange", img: "/images/fruit-1.jpeg", price: "$5.50" },
+        { title: "Tangerine", img: "/images/fruit-2.jpeg", price: "$3.00" },
+        { title: "Raspberry", img: "/images/fruit-3.jpeg", price: "$10.00" },
+        { title: "Orange", img: "/images/fruit-1.jpeg", price: "$5.50" },
+        { title: "Tangerine", img: "/images/fruit-2.jpeg", price: "$3.00" },
+        { title: "Raspberry", img: "/images/fruit-3.jpeg", price: "$10.00" },
         { title: "Orange", img: "/images/fruit-1.jpeg", price: "$5.50" },
         { title: "Tangerine", img: "/images/fruit-2.jpeg", price: "$3.00" },
         { title: "Raspberry", img: "/images/fruit-3.jpeg", price: "$10.00" },
