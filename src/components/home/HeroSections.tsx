@@ -28,10 +28,11 @@ const HeroSection = () => {
                         color="secondary"
                         size="lg"
                         className="bg-light-primary text-light-background dark:bg-dark-primary dark:text-dark-background rounded-md shadow-md hover:bg-[#924F29] dark:hover:bg-[#CCAA84] transition mb-4"
-                        onClick={() => window.open('https://wa.me/6285156967944?text=Halo%20kak,%0A%0Asaya%20dari%20[Nama%20Anda]%20berminat%20mengadakan%20bazaar%20pada%20tanggal%20[Masukkan%20tanggal%20dan%20bulan].%0A%0AApakah%20bisa%20dibantu%3F', '_blank')}
+                        onClick={() => window.open('https://wa.me/6285156967944?text=Halo%20kak,%0A%0Asaya%20dari%20[Nama%20Anda]%20%0Aberminat%20mengadakan%20bazaar%20pada%20tanggal%20[Masukkan%20tanggal%20dan%20bulan].%0A%0AApakah%20bisa%20dibantu%3F', '_blank')}
                     >
-                        Ingin mengadakan Bazaar?
+                        Organisasimu Ingin mengadakan Bazaar?
                     </Button>
+
 
                 </div>
 
