@@ -2,6 +2,7 @@ import HeroSection from '@/components/home/HeroSections';
 import Footer from '@/components/Footer'; // Pastikan path ini benar
 import Navbar from '@/components/Navbar';
 import MenuSection from '@/components/home/MenuSection';
+import GallerySection from '@/components/home/GallerySection';
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
         <HeroSection />
       </div>
       <MenuSection />
+      <GallerySection />
       <Footer /> 
     </div>
   );
