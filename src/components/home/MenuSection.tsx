@@ -87,23 +87,23 @@ const MenuSection = () => {
 
             {/* Section Coffee */}
             <h3 className="text-2xl font-semibold text-primary mb-4 dark:text-light-secondary">Coffee</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
                 {renderMenuItems(coffeeList, 0)}
             </div>
 
             {/* Section Non-Coffee */}
             <h3 className="text-2xl font-semibold text-primary mb-4 dark:text-light-secondary">Non-Coffee</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
                 {renderMenuItems(nonCoffeeList, coffeeList.length)}
             </div>
 
             {/* Section Milk */}
             <h3 className="text-2xl font-semibold text-primary mb-4 dark:text-light-secondary">Milk</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
                 {renderMenuItems(milkList, coffeeList.length + nonCoffeeList.length)}
             </div>
         </div>
     );
 };
 
-export default MenuSection;
+export default MenuSection;2
