@@ -1,6 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Bossa:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bossa:wght@400;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@layer base {
+    @font-face {
+        font-family: 'Bossa';
+        src: url(/assets/fonts/Bossa-Bold.dbe4b9ea.woff2) format('woff2');
+    }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

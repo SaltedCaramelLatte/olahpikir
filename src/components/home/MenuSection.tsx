@@ -23,15 +23,26 @@ const coffeeList: MenuItemType[] = [
     { title: "Espresso", img: espressoImage, price: "$4.00", description: "Strong and bold", status: "" },
     { title: "Latte", img: latteImage, price: "$5.00", description: "Smooth and creamy", status: "" },
     { title: "Cappuccino", img: cappuccinoImage, price: "$5.50", description: "Rich and frothy", status: "" },
+    { title: "Latte", img: latteImage, price: "$5.00", description: "Smooth and creamy", status: "" },
+    { title: "Cappuccino", img: cappuccinoImage, price: "$5.50", description: "Rich and frothy", status: "" },
 ];
 
 const nonCoffeeList: MenuItemType[] = [
     { title: "Orange", img: orangeImage, price: "$5.50", description: "Fresh and tangy", status: "" },
     { title: "Tangerine", img: tangerineImage, price: "$3.00", description: "Sweet and juicy", status: "" },
     { title: "Raspberry", img: raspberryImage, price: "$10.00", description: "Tart and sweet", status: "" },
+    { title: "Orange", img: orangeImage, price: "$5.50", description: "Fresh and tangy", status: "" },
+    { title: "Tangerine", img: tangerineImage, price: "$3.00", description: "Sweet and juicy", status: "" },
+    { title: "Raspberry", img: raspberryImage, price: "$10.00", description: "Tart and sweet", status: "" },
 ];
 
 const milkList: MenuItemType[] = [
+    { title: "Whole Milk", img: milkImage, price: "$2.50", description: "Rich and creamy", status: "" },
+    { title: "Almond Milk", img: milkImage, price: "$3.00", description: "Nutty and smooth", status: "" },
+    { title: "Soy Milk", img: milkImage, price: "$3.00", description: "Light and healthy", status: "" },
+    { title: "Whole Milk", img: milkImage, price: "$2.50", description: "Rich and creamy", status: "" },
+    { title: "Almond Milk", img: milkImage, price: "$3.00", description: "Nutty and smooth", status: "" },
+    { title: "Soy Milk", img: milkImage, price: "$3.00", description: "Light and healthy", status: "" },
     { title: "Whole Milk", img: milkImage, price: "$2.50", description: "Rich and creamy", status: "" },
     { title: "Almond Milk", img: milkImage, price: "$3.00", description: "Nutty and smooth", status: "" },
     { title: "Soy Milk", img: milkImage, price: "$3.00", description: "Light and healthy", status: "" },
