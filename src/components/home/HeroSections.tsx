@@ -28,7 +28,7 @@ const HeroSection = () => {
                         color="secondary"
                         size="lg"
                         className="bg-light-primary text-light-background dark:bg-dark-primary dark:text-dark-background rounded-md shadow-md hover:bg-[#924F29] dark:hover:bg-[#CCAA84] transition mb-4"
-                        onClick={() => window.open('https://wa.me/6285190303750?text=Ingin%20mengadakan%20Bazaar?', '_blank')}
+                        onClick={() => window.open('https://wa.me/6285156967944?text=Ingin%20mengadakan%20Bazaar?', '_blank')}
                     >
                         Ingin mengadakan Bazaar?
                     </Button>
