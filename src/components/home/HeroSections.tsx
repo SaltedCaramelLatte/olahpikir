@@ -14,11 +14,11 @@ const HeroSection = () => {
                 <p className="text-xl sm:text-2xl text-dark-secondary dark:text-light-secondary mb-6">
                     Nikmati berbagai varian kopi yang kami sajikan dengan penuh cinta dan dedikasi.
                 </p>
-                <div className="flex w-full justify-between items-center gap-4">
+                <div className="flex w-full justify-center items-center gap-4">
                     <Button
                         color="secondary"
                         size="lg"
-                        className="bg-light-primary text-light-background dark:bg-dark-primary dark:text-dark-background rounded-md shadow-md hover:bg-[#924F29] dark:hover:bg-[#CCAA84] transition mb-4"
+                        className="bg-light-primary text-light-background dark:bg-dark-primary dark:text-dark-background rounded-md shadow-md hover:bg-[#924F29] dark:hover:bg-[#CCAA84] transition mb-4 mx-2"
                     >
                         Lihat Menu
                     </Button>
@@ -27,16 +27,12 @@ const HeroSection = () => {
                     <Button
                         color="secondary"
                         size="lg"
-                        className="bg-light-primary text-light-background dark:bg-dark-primary dark:text-dark-background rounded-md shadow-md hover:bg-[#924F29] dark:hover:bg-[#CCAA84] transition mb-4"
+                        className="bg-light-primary text-light-background dark:bg-dark-primary dark:text-dark-background rounded-md shadow-md hover:bg-[#924F29] dark:hover:bg-[#CCAA84] transition mb-4 mx-2"
                         onClick={() => window.open('https://wa.me/6285156967944?text=Halo%20kak,%0A%0Asaya%20dari%20[Nama%20Anda]%20%0Aberminat%20mengadakan%20bazaar%20pada%20tanggal%20[Masukkan%20tanggal%20dan%20bulan].%0A%0AApakah%20bisa%20dibantu%3F', '_blank')}
                     >
                         Ingin mengadakan Bazaar?
                     </Button>
-
-
                 </div>
-
-
             </div>
 
             <div className="relative z-10 md:w-1/2 flex justify-center mt-8 md:mt-0 md:mr-10 overflow-hidden rounded-xl shadow-lg">
