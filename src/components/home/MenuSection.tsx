@@ -82,24 +82,24 @@ const MenuSection = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center bg-light-background dark:bg-dark-background min-h-screen py-10">
+        <div className="flex flex-col items-center justify-center bg-light-background dark:bg-dark-background min-h-screen py-10 px-4 lg:px-20">
             <h2 className="text-4xl font-bold text-primary mb-8 dark:text-gray-200">Our Menu</h2>
 
             {/* Section Coffee */}
             <h3 className="text-2xl font-semibold text-primary mb-4 dark:text-light-secondary">Coffee</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
                 {renderMenuItems(coffeeList, 0)}
             </div>
 
             {/* Section Non-Coffee */}
             <h3 className="text-2xl font-semibold text-primary mb-4 dark:text-light-secondary">Non-Coffee</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
                 {renderMenuItems(nonCoffeeList, coffeeList.length)}
             </div>
 
             {/* Section Milk */}
             <h3 className="text-2xl font-semibold text-primary mb-4 dark:text-light-secondary">Milk</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
                 {renderMenuItems(milkList, coffeeList.length + nonCoffeeList.length)}
             </div>
         </div>
