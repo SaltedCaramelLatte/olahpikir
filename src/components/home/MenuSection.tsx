@@ -82,14 +82,14 @@ const MenuSection = () => {
 
     return (
         <section className="relative flex flex-col items-center justify-center min-h-screen bg-light-background dark:bg-dark-background py-10 px-4">
-            <h2 className="text-4xl font-bold text-primary mb-8">Our Menu</h2>
+            <h2 className="text-4xl font-bold text-primary mb-8 dark:text-gray-200">Our Menu</h2>
 
-            <h3 className="text-2xl font-semibold text-primary mb-4">Coffee</h3>
+            <h3 className="text-2xl font-semibold text-primary mb-4 dark:text-light-secondary">Coffee</h3>
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center">
                 {renderMenuItems(coffeeList, 0)}
             </div>
             <Spacer y={10} />
-            <h3 className="text-2xl font-semibold text-primary mb-4">Non-Coffee</h3>
+            <h3 className="text-2xl font-semibold text-primary mb-4 dark:text-light-secondary">Non-Coffee</h3>
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center">
                 {renderMenuItems(nonCoffeeList, coffeeList.length)}
             </div>
