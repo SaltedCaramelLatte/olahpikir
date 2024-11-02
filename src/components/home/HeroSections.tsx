@@ -14,7 +14,7 @@ const HeroSection = () => {
                 <p className="text-xl sm:text-2xl text-dark-secondary dark:text-light-secondary mb-6">
                     Nikmati berbagai varian kopi yang kami sajikan dengan penuh cinta dan dedikasi.
                 </p>
-                <div className="flex w-full justify-between items-center">
+                <div className="flex w-full justify-between items-center gap-4">
                     <Button
                         color="secondary"
                         size="lg"
@@ -33,6 +33,7 @@ const HeroSection = () => {
                         Ingin mengadakan Bazaar?
                     </Button>
                 </div>
+
 
             </div>
 
