@@ -1,5 +1,7 @@
+// MenuSection.tsx
 import { useEffect, useRef, useState } from "react";
 import MenuItem from "./MenuItem";
+import { Tabs, Tab } from "@nextui-org/react";
 
 import espressoImage from "@/images/coffee_p.jpg";
 import latteImage from "@/images/coffee.jpg";
@@ -37,9 +39,12 @@ const milkList: MenuItemType[] = [
 
 const MenuSection = () => {
     const [visibleItems, setVisibleItems] = useState<boolean[]>(Array(coffeeList.length + nonCoffeeList.length + milkList.length).fill(false));
+    const [activeTab, setActiveTab] = useState<string>("coffee");
     const observer = useRef<IntersectionObserver | null>(null);
 
     useEffect(() => {
+        if (observer.current) observer.current.disconnect();
+
         observer.current = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -63,9 +68,9 @@ const MenuSection = () => {
         elements.forEach((item) => observer.current?.observe(item));
 
         return () => {
-            elements.forEach((item) => observer.current?.unobserve(item));
+            observer.current?.disconnect();
         };
-    }, []);
+    }, [activeTab]);
 
     const renderMenuItems = (list: MenuItemType[], offset: number) => {
         return list.map((item, index) => (
@@ -81,23 +86,30 @@ const MenuSection = () => {
     return (
         <div className="flex flex-col items-center justify-center bg-light-background dark:bg-dark-background min-h-screen py-10 px-4 lg:px-20">
             <h2 className="text-4xl font-bold text-primary mb-8 dark:text-gray-200">Our Menu</h2>
-
-            {/* Section Coffee */}
-            <h3 className="text-2xl font-semibold text-primary mb-4 dark:text-light-secondary">Coffee</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
-                {renderMenuItems(coffeeList, 0)}
-            </div>
-
-            {/* Section Non-Coffee */}
-            <h3 className="text-2xl font-semibold text-primary mb-4 dark:text-light-secondary">Non-Coffee</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
-                {renderMenuItems(nonCoffeeList, coffeeList.length)}
-            </div>
-
-            {/* Section Milk */}
-            <h3 className="text-2xl font-semibold text-primary mb-4 dark:text-light-secondary">Milk</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
-                {renderMenuItems(milkList, coffeeList.length + nonCoffeeList.length)}
+            
+            <div className="w-full max-w-3xl"> 
+                <Tabs 
+                    aria-label="Menu Categories" 
+                    className="bg-white dark:bg-dark-surface rounded-xl shadow-lg p-4 border border-gray-200 dark:border-gray-700" 
+                    style={{ marginTop: '20px' }}
+                    onSelectionChange={(key) => setActiveTab(String(key))}
+                >
+                    <Tab key="coffee" title="Coffee">
+                        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
+                            {renderMenuItems(coffeeList, 0)}
+                        </div>
+                    </Tab>
+                    <Tab key="non-coffee" title="Non-Coffee">
+                        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
+                            {renderMenuItems(nonCoffeeList, coffeeList.length)}
+                        </div>
+                    </Tab>
+                    <Tab key="milk" title="Milk">
+                        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
+                            {renderMenuItems(milkList, coffeeList.length + nonCoffeeList.length)}
+                        </div>
+                    </Tab>
+                </Tabs>
             </div>
         </div>
     );
