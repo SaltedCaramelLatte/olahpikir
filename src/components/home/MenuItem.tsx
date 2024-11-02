@@ -1,4 +1,3 @@
-// MenuItem.tsx
 import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
 import { useState } from "react";
 
@@ -23,19 +22,19 @@ const MenuItem = ({ item, index, visible }: MenuItemProps) => {
                 shadow="lg"
                 isPressable
                 radius="lg"
-                className="rounded-xl hover:scale-105 transition-transform bg-gray-50 dark:bg-gray-800 overflow-hidden w-[150px] h-[300px]"
+                className="rounded-xl hover:scale-105 transition-transform bg-gray-50 dark:bg-gray-800 overflow-hidden w-full max-w-[350px] lg:max-w-[400px] mx-auto"
                 onPress={() => console.log(`${item.title} pressed`)}
             >
-                <CardBody className="overflow-hidden p-0">
+                <CardBody className="overflow-hidden p-4">
                     {imageError ? (
-                        <div className="bg-gray-200 dark:bg-gray-700 w-full h-[400px] flex items-center justify-center rounded-b-lg">
+                        <div className="bg-gray-200 dark:bg-gray-700 w-full h-[220px] flex items-center justify-center rounded-b-lg">
                             <span className="text-gray-500 dark:text-gray-300">Image Placeholder</span>
                         </div>
                     ) : (
                         <Image
                             shadow="sm"
                             alt={item.title}
-                            className="w-full h-[180px] object-cover"
+                            className="w-full h-[220px] object-cover"
                             src={item.img}
                             onError={() => setImageError(true)}
                         />
