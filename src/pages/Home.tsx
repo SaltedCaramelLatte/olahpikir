@@ -1,8 +1,7 @@
 import HeroSection from '@/components/home/HeroSections';
-import Footer from '@/components/Footer'; // Pastikan path ini benar
+import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
-import { MenuSection } from '@/components/home/MenuSection';
-// import { TabSection } from '@/components/home/MenuSection';
+import MenuSection from '@/components/home/MenuSection';
 import GallerySection from '@/components/home/GallerySection';
 
 const Home = () => {
@@ -13,7 +12,6 @@ const Home = () => {
         <HeroSection />
       </div>
       <MenuSection />
-      {/* <TabSection /> */}
       <GallerySection />
       <Footer />
     </div>
