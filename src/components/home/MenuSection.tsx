@@ -38,8 +38,9 @@ const milkList: MenuItemType[] = [
 ];
 
 const MenuSection = () => {
-    const [visibleItems, setVisibleItems] = useState<boolean[]>(Array(coffeeList.length + nonCoffeeList.length + milkList.length).fill(false));
+    // Mengatur tab "coffee" sebagai default
     const [activeTab, setActiveTab] = useState<string>("coffee");
+    const [visibleItems, setVisibleItems] = useState<boolean[]>(Array(coffeeList.length + nonCoffeeList.length + milkList.length).fill(false));
     const observer = useRef<IntersectionObserver | null>(null);
 
     useEffect(() => {
@@ -86,13 +87,14 @@ const MenuSection = () => {
     return (
         <div className="flex flex-col items-center justify-center bg-light-background dark:bg-dark-background min-h-screen py-10 px-4 lg:px-20">
             <h2 className="text-4xl font-bold text-primary mb-8 dark:text-gray-200">Our Menu</h2>
-            
-            <div className="w-full max-w-3xl"> 
-                <Tabs 
-                    aria-label="Menu Categories" 
-                    className="bg-white dark:bg-dark-surface rounded-xl shadow-lg p-4 border border-gray-200 dark:border-gray-700" 
+
+            <div className="w-full max-w-3xl">
+                <Tabs
+                    aria-label="Menu Categories"
+                    className="bg-white dark:bg-dark-surface rounded-xl shadow-lg p-4 border border-gray-200 dark:border-gray-700"
                     style={{ marginTop: '20px' }}
-                    onSelectionChange={(key) => setActiveTab(String(key))}
+                    selectedKey={activeTab} // Mengatur tab yang dipilih berdasarkan state activeTab
+                    onSelectionChange={(key) => setActiveTab(String(key))} // Mengubah tab aktif berdasarkan pilihan pengguna
                 >
                     <Tab key="coffee" title="Coffee">
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
