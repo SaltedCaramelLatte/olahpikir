@@ -24,10 +24,11 @@ const MenuItem = ({ item, index, visible }: MenuItemProps) => {
                 shadow="lg"
                 isPressable
                 radius="lg"
-                className="rounded-xl hover:scale-105 transition-transform bg-gray-50 dark:bg-gray-800 overflow-hidden w-[150px] h-[300px] mx-auto"
+                className="rounded-xl bg-gray-50 dark:bg-gray-800 overflow-hidden max-w-[150px] max-h-[300px] mx-auto" // Menggunakan max-w dan max-h
                 onPress={() => console.log(`${item.title} pressed`)}
             >
-                <CardBody className="bg-gray-200 dark:bg-gray-700 w-full h-full flex items-center justify-center p-0">
+
+                <CardBody className="bg-gray-200 dark:bg-gray-700 w-full h-full p-0 overflow-hidden flex items-center justify-center">
                     {imageError ? (
                         <div className="bg-gray-200 dark:bg-gray-700 w-full h-full flex items-center justify-center">
                             <span className="text-gray-500 dark:text-gray-300">Image Placeholder</span>
@@ -38,9 +39,11 @@ const MenuItem = ({ item, index, visible }: MenuItemProps) => {
                             src={item.img}
                             style={{
                                 opacity: visible ? 1 : 0.3,
-                                objectFit: 'cover', // Atur gambar agar sesuai dengan tinggi CardBody
-                                height: '100%', // Mengisi tinggi CardBody
-                                width: 'auto' // Lebar akan mengikuti secara proporsional
+
+                                objectFit: 'cover', // Mengisi seluruh tinggi CardBody
+                                width: 'auto', // Sesuaikan dengan lebar CardBody
+                                height: 'auto', // Mengisi tinggi CardBody
+                                maxHeight: '300px' // Batasi tinggi maksimal jika diperlukan
                             }}
                             onError={() => setImageError(true)}
                             className="bg-gray-200 dark:bg-gray-700"

@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import MenuItem from "./MenuItem";
 
 // Impor gambar
-import espressoImage from "@/images/coffee.jpg";
+import espressoImage from "@/images/coffee_p.jpg";
 import latteImage from "@/images/coffee.jpg";
 import cappuccinoImage from "@/images/coffee.jpg";
 import orangeImage from "@/images/coffee.jpg";
