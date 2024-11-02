@@ -1,8 +1,6 @@
-// components/home/MenuSection.tsx
 import { useEffect, useRef, useState } from "react";
 import MenuItem from "./MenuItem";
 
-// Impor gambar untuk setiap menu
 import espressoImage from "@/images/coffee_p.jpg";
 import latteImage from "@/images/coffee.jpg";
 import cappuccinoImage from "@/images/coffee.jpg";
@@ -19,7 +17,6 @@ interface MenuItemType {
     status: string;
 }
 
-// Daftar menu untuk setiap kategori
 const coffeeList: MenuItemType[] = [
     { title: "Espresso", img: espressoImage, price: "$4.00", description: "Strong and bold", status: "" },
     { title: "Latte", img: latteImage, price: "$5.00", description: "Smooth and creamy", status: "" },
@@ -104,6 +101,6 @@ const MenuSection = () => {
             </div>
         </div>
     );
-};
+}
 
-export default MenuSection;2
+export default MenuSection;
