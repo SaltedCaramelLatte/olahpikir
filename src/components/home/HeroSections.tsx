@@ -42,7 +42,7 @@ const HeroSection = () => {
                 <Image
                     src={coffeeImage}
                     alt="Gelas kopi"
-                    className="object-cover w-full h-full"
+                    className="object-cover w-auto h-auto"
                     onError={() => setImageError(true)}
                     style={{ opacity: 1, visibility: 'visible' }}
                 />
