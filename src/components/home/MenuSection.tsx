@@ -1,5 +1,6 @@
 // components/home/MenuSection.tsx
-import MenuList from "./menuList/MenuList";
+import { useEffect, useRef, useState } from "react";
+import MenuItem from "./MenuItem";
 
 // Impor gambar untuk setiap menu
 import espressoImage from "@/images/coffee_p.jpg";
@@ -38,18 +39,69 @@ const milkList: MenuItemType[] = [
 ];
 
 const MenuSection = () => {
+    const [visibleItems, setVisibleItems] = useState<boolean[]>(Array(coffeeList.length + nonCoffeeList.length + milkList.length).fill(false));
+    const observer = useRef<IntersectionObserver | null>(null);
+
+    useEffect(() => {
+        observer.current = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const index = (entry.target as HTMLElement).dataset.index;
+                        if (index !== undefined) {
+                            setVisibleItems((prev) => {
+                                const newVisibleItems = [...prev];
+                                newVisibleItems[parseInt(index)] = true;
+                                return newVisibleItems;
+                            });
+                            observer.current?.unobserve(entry.target);
+                        }
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        const elements = document.querySelectorAll('.menu-item');
+        elements.forEach((item) => observer.current?.observe(item));
+
+        return () => {
+            elements.forEach((item) => observer.current?.unobserve(item));
+        };
+    }, []);
+
+    const renderMenuItems = (list: MenuItemType[], offset: number) => {
+        return list.map((item, index) => (
+            <MenuItem
+                item={item}
+                index={index + offset}
+                visible={visibleItems[index + offset]}
+                key={index + offset}
+            />
+        ));
+    };
+
     return (
         <div className="flex flex-col items-center justify-center bg-light-background dark:bg-dark-background min-h-screen py-10">
             <h2 className="text-4xl font-bold text-primary mb-8 dark:text-gray-200">Our Menu</h2>
-            
+
             {/* Section Coffee */}
-            <MenuList title="Coffee" list={coffeeList} />
+            <h3 className="text-2xl font-semibold text-primary mb-4 dark:text-light-secondary">Coffee</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center">
+                {renderMenuItems(coffeeList, 0)}
+            </div>
 
             {/* Section Non-Coffee */}
-            <MenuList title="Non-Coffee" list={nonCoffeeList} />
+            <h3 className="text-2xl font-semibold text-primary mb-4 dark:text-light-secondary">Non-Coffee</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center">
+                {renderMenuItems(nonCoffeeList, coffeeList.length)}
+            </div>
 
             {/* Section Milk */}
-            <MenuList title="Milk" list={milkList} />
+            <h3 className="text-2xl font-semibold text-primary mb-4 dark:text-light-secondary">Milk</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center">
+                {renderMenuItems(milkList, coffeeList.length + nonCoffeeList.length)}
+            </div>
         </div>
     );
 };
