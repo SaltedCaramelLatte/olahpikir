@@ -42,7 +42,7 @@ const MenuItem = ({ item, index, visible }: MenuItemProps) => {
 
                                 objectFit: 'cover', // Mengisi seluruh tinggi CardBody
                                 width: 'auto', // Sesuaikan dengan lebar CardBody
-                                height: 'auto', // Mengisi tinggi CardBody
+                                height: '100%', // Mengisi tinggi CardBody
                                 maxHeight: '300px' // Batasi tinggi maksimal jika diperlukan
                             }}
                             onError={() => setImageError(true)}
