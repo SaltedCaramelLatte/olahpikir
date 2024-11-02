@@ -14,13 +14,25 @@ const HeroSection = () => {
                 <p className="text-xl sm:text-2xl text-dark-secondary dark:text-light-secondary mb-6">
                     Nikmati berbagai varian kopi yang kami sajikan dengan penuh cinta dan dedikasi.
                 </p>
-                <Button
-                    color="secondary"
-                    size="lg"
-                    className="bg-light-primary text-light-background dark:bg-dark-primary dark:text-dark-background rounded-md shadow-md hover:bg-[#924F29] dark:hover:bg-[#CCAA84] transition"
-                >
-                    Lihat Menu
-                </Button>
+                <div className="flex w-full justify-between items-center">
+                    <Button
+                        color="secondary"
+                        size="lg"
+                        className="bg-light-primary text-light-background dark:bg-dark-primary dark:text-dark-background rounded-md shadow-md hover:bg-[#924F29] dark:hover:bg-[#CCAA84] transition mb-4"
+                    >
+                        Lihat Menu
+                    </Button>
+
+                    {/* Tombol WhatsApp */}
+                    <Button
+                        color="secondary"
+                        size="lg"
+                        className="bg-light-primary text-light-background dark:bg-dark-primary dark:text-dark-background rounded-md shadow-md hover:bg-[#924F29] dark:hover:bg-[#CCAA84] transition mb-4"
+                        onClick={() => window.open('https://wa.me/6285190303750?text=Ingin%20mengadakan%20Bazaar?', '_blank')}
+                    >
+                        Ingin mengadakan Bazaar?
+                    </Button>
+                </div>
 
             </div>
 
@@ -33,7 +45,6 @@ const HeroSection = () => {
                     style={{ opacity: 1, visibility: 'visible' }}
                 />
             </div>
-
         </section>
     );
 };
