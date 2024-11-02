@@ -39,18 +39,28 @@ const Footer = () => {
 
                         {/* Kontak Informasi */}
                         <div className="flex flex-col col-span-6 md:col-span-8">
-                            <div className="flex justify-between items-start">
-                                <div className="flex flex-col gap-0">
-                                    <p className="text-lg font-medium mt-2 text-black dark:text-white">
-                                        Email: <a href={`mailto:${footer.contact_email}`} className="text-blue-400 dark:text-blue-300 hover:underline">{footer.contact_email}</a>
-                                    </p>
-                                    <p className="mt-2 text-gray-500 dark:text-gray-400">
-                                        Telepon: <a href={`tel:${footer.contact_phone}`} className="text-blue-400 dark:text-blue-300 hover:underline">{footer.contact_phone}</a>
-                                    </p>
-                                    <p className="mt-2 text-gray-500 dark:text-gray-400">
-                                        Alamat: {footer.contact_address}
-                                    </p>
-                                </div>
+                            <div className="flex flex-col gap-2">
+                                <p className="text-lg font-medium text-black dark:text-white">
+                                    Email: 
+                                    <a 
+                                        href={`mailto:${footer.contact_email}`} 
+                                        className="text-blue-400 dark:text-blue-300 hover:underline"
+                                    >
+                                        {footer.contact_email}
+                                    </a>
+                                </p>
+                                <p className="text-lg text-gray-500 dark:text-gray-400">
+                                    Telepon: 
+                                    <a 
+                                        href={`tel:${footer.contact_phone}`} 
+                                        className="text-blue-400 dark:text-blue-300 hover:underline"
+                                    >
+                                        {footer.contact_phone}
+                                    </a>
+                                </p>
+                                <p className="text-lg text-gray-500 dark:text-gray-400">
+                                    Alamat: {footer.contact_address}
+                                </p>
                             </div>
                         </div>
                     </div>

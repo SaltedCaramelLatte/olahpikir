@@ -14,7 +14,7 @@ const HeroSection = () => {
                 <p className="text-xl sm:text-2xl text-dark-secondary dark:text-light-secondary mb-6">
                     Nikmati berbagai varian kopi yang kami sajikan dengan penuh cinta dan dedikasi.
                 </p>
-                <div className="flex w-full justify-center items-center gap-4">
+                <div className="flex justify-center items-center gap-2">
                     <Button
                         color="secondary"
                         size="lg"
