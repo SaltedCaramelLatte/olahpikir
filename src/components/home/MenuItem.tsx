@@ -13,9 +13,12 @@ interface MenuItemProps {
 
 const MenuItem = ({ item, index, visible }: MenuItemProps) => {
     const [imageError, setImageError] = useState(false);
+
     return (
         <div
-            className={`menu-item transition-opacity duration-1000 ${visible ? 'opacity-100' : 'opacity-0'}`}
+            className={`menu-item transition-opacity duration-1000 ${
+                visible ? 'opacity-100' : 'opacity-0'
+            }`}
             data-index={index}
         >
             <Card
@@ -25,16 +28,17 @@ const MenuItem = ({ item, index, visible }: MenuItemProps) => {
                 className="rounded-xl hover:scale-105 transition-transform bg-gray-50 dark:bg-gray-800 overflow-hidden w-full max-w-[350px] lg:max-w-[400px] mx-auto"
                 onPress={() => console.log(`${item.title} pressed`)}
             >
-                <CardBody className="overflow-hidden p-4">
+                <CardBody className="p-0 h-[400px]"> {/* Mengatur tinggi CardBody agar mengikuti rasio 1:2 */}
                     {imageError ? (
-                        <div className="bg-gray-200 dark:bg-gray-700 w-full h-[220px] flex items-center justify-center rounded-b-lg">
+                        <div className="bg-gray-200 dark:bg-gray-700 w-full h-full flex items-center justify-center">
                             <span className="text-gray-500 dark:text-gray-300">Image Placeholder</span>
                         </div>
                     ) : (
                         <Image
+                            style={{ opacity: visible ? 1 : 0.3 }} // Atur opacity di elemen gambar
                             shadow="sm"
                             alt={item.title}
-                            className="w-full h-[220px] object-cover"
+                            className="object-cover w-full h-full" // Memastikan gambar memenuhi CardBody dengan rasio 1:2
                             src={item.img}
                             onError={() => setImageError(true)}
                         />

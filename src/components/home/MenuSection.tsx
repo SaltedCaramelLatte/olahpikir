@@ -2,6 +2,14 @@ import { Spacer } from "@nextui-org/react";
 import { useEffect, useRef, useState } from "react";
 import MenuItem from "./MenuItem";
 
+// Impor gambar
+import espressoImage from "@/images/coffee.jpg";
+import latteImage from "@/images/coffee.jpg";
+import cappuccinoImage from "@/images/coffee.jpg";
+import orangeImage from "@/images/coffee.jpg";
+import tangerineImage from "@/images/coffee.jpg";
+import raspberryImage from "@/images/coffee.jpg";
+
 interface MenuItemType {
     title: string;
     img: string;
@@ -10,27 +18,27 @@ interface MenuItemType {
 
 const MenuSection = () => {
     const coffeeList: MenuItemType[] = [
-        { title: "Espresso", img: "/images/coffee-1.jpeg", price: "$4.00" },
-        { title: "Latte", img: "/images/coffee-2.jpeg", price: "$5.00" },
-        { title: "Cappuccino", img: "/images/coffee-3.jpeg", price: "$5.50" },
-        { title: "Espresso", img: "/images/coffee-1.jpeg", price: "$4.00" },
-        { title: "Latte", img: "/images/coffee-2.jpeg", price: "$5.00" },
-        { title: "Cappuccino", img: "/images/coffee-3.jpeg", price: "$5.50" },
-        { title: "Espresso", img: "/images/coffee-1.jpeg", price: "$4.00" },
-        { title: "Latte", img: "/images/coffee-2.jpeg", price: "$5.00" },
-        { title: "Cappuccino", img: "/images/coffee-3.jpeg", price: "$5.50" },
+        { title: "Espresso", img: espressoImage, price: "$4.00" },
+        { title: "Latte", img: latteImage, price: "$5.00" },
+        { title: "Cappuccino", img: cappuccinoImage, price: "$5.50" },
+        { title: "Espresso", img: espressoImage, price: "$4.00" },
+        { title: "Latte", img: latteImage, price: "$5.00" },
+        { title: "Cappuccino", img: cappuccinoImage, price: "$5.50" },
+        { title: "Espresso", img: espressoImage, price: "$4.00" },
+        { title: "Latte", img: latteImage, price: "$5.00" },
+        { title: "Cappuccino", img: cappuccinoImage, price: "$5.50" },
     ];
 
     const nonCoffeeList: MenuItemType[] = [
-        { title: "Orange", img: "/images/fruit-1.jpeg", price: "$5.50" },
-        { title: "Tangerine", img: "/images/fruit-2.jpeg", price: "$3.00" },
-        { title: "Raspberry", img: "/images/fruit-3.jpeg", price: "$10.00" },
-        { title: "Orange", img: "/images/fruit-1.jpeg", price: "$5.50" },
-        { title: "Tangerine", img: "/images/fruit-2.jpeg", price: "$3.00" },
-        { title: "Raspberry", img: "/images/fruit-3.jpeg", price: "$10.00" },
-        { title: "Orange", img: "/images/fruit-1.jpeg", price: "$5.50" },
-        { title: "Tangerine", img: "/images/fruit-2.jpeg", price: "$3.00" },
-        { title: "Raspberry", img: "/images/fruit-3.jpeg", price: "$10.00" },
+        { title: "Orange", img: orangeImage, price: "$5.50" },
+        { title: "Tangerine", img: tangerineImage, price: "$3.00" },
+        { title: "Raspberry", img: raspberryImage, price: "$10.00" },
+        { title: "Orange", img: orangeImage, price: "$5.50" },
+        { title: "Tangerine", img: tangerineImage, price: "$3.00" },
+        { title: "Raspberry", img: raspberryImage, price: "$10.00" },
+        { title: "Orange", img: orangeImage, price: "$5.50" },
+        { title: "Tangerine", img: tangerineImage, price: "$3.00" },
+        { title: "Raspberry", img: raspberryImage, price: "$10.00" },
     ];
 
     const [visibleItems, setVisibleItems] = useState<boolean[]>(Array(coffeeList.length + nonCoffeeList.length).fill(false));
