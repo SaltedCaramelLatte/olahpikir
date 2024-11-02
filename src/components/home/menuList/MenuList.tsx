@@ -19,7 +19,7 @@ const MenuList = ({ title, list }: MenuListProps) => {
     return (
         <section className="flex flex-col items-center justify-center py-10 px-4 w-full">
             <h3 className="text-2xl font-semibold text-primary mb-4 dark:text-light-secondary">{title}</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center">
                 {list.map((item, index) => (
                     <MenuItem item={item} index={index} visible={true} key={index} />
                 ))}
