@@ -1,14 +1,24 @@
 import { Button, Image } from '@nextui-org/react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Impor useNavigate
 import coffeeImage from "@/images/coffee.jpg";
 
 const HeroSection = () => {
     const [imageError, setImageError] = useState(false);
-    const navigate = useNavigate(); // Inisialisasi navigate
+
+    // Fungsi scroll ke section tertentu
+    interface ScrollToSectionProps {
+        id: string;
+    }
+
+    const scrollToSection = (id: ScrollToSectionProps['id']): void => {
+        const section = document.getElementById(id);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     return (
-        <section className="relative flex flex-col md:flex-row items-center justify-center min-h-screen bg-light-background dark:bg-dark-background px-4 lg:px-20 sm:px-6">
+        <section className="relative flex flex-col md:flex-row items-center justify-center min-h-screen bg-light-background dark:bg-dark-background pt-24 px-4 lg:px-20 px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col items-start md:w-1/2 max-w-lg text-left md:ml-10">
                 <h1 className="font-bold font-bossa text-6xl sm:text-5xl lg:text-6xl text-primary mb-4 leading-tight dark:text-gray-200">
                     olahpikir Cafe
@@ -21,7 +31,7 @@ const HeroSection = () => {
                         color="secondary"
                         size="md"
                         className="bg-light-primary text-light-background dark:bg-dark-primary dark:text-dark-background rounded-md shadow-md hover:bg-[#924F29] dark:hover:bg-[#CCAA84] transition mb-4"
-                        onClick={() => navigate('/menu')} // Navigasi ke halaman menu
+                        onClick={() => scrollToSection('menu')} // Fungsi scroll
                     >
                         Lihat Menu
                     </Button>
