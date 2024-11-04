@@ -49,7 +49,7 @@ const ReachMeSection = () => {
                             </a>
                         </div>
                         <p className="text-center text-light-text dark:text-dark-text">
-                            GitHub: <a href="#" className="text-light-primary dark:text-dark-primary underline" target="_blank" rel="noopener noreferrer">RahmatRafiq</a>
+                            GitHub: <a href="#" className="text-light-primary dark:text-dark-primary underline" target="_blank" rel="noopener noreferrer">Wk</a>
                         </p>
                     </ModalBody>
                     <ModalFooter className="text-light-primary dark:text-white flex justify-center">
@@ -62,3 +62,5 @@ const ReachMeSection = () => {
         </>
     );
 };
+
+export default ReachMeSection;
