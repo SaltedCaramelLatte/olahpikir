@@ -24,8 +24,13 @@ const HeroSection = () => {
                     olahpikir Cafe
                 </h1>
                 <p className="text-xl sm:text-2xl text-dark-secondary dark:text-light-secondary mb-6">
-                    Nikmati berbagai varian kopi yang kami sajikan dengan penuh cinta dan dedikasi.
+                    Menyajikan kopi dengan kehangatan dan ketulusan, tempat untuk sejenak berhenti dan menikmati.
                 </p>
+
+                <p className="text-md sm:text-lg text-dark-secondary dark:text-light-secondary mb-4">
+                    Pembayaran mudah dengan QRIS dan metode lainnya.
+                </p>
+
                 <div className="flex justify-center items-center gap-2">
                     <Button
                         color="secondary"

@@ -102,3 +102,28 @@ my-nextui-project/
 ├── tailwind.config.js              # Konfigurasi Tailwind CSS (termasuk dark mode dan tema)
 └── vite.config.ts                  # Konfigurasi Vite dalam TypeScript
 ```
+
+```
+src/
+├── components/           # Komponen UI
+│   ├── auth/
+│   │   ├── Login.tsx
+│   │   ├── Register.tsx
+│   │   └── Profile.tsx
+│   └── menu/
+│       ├── MenuItem.tsx
+│       ├── MenuList.tsx
+│       └── MenuSection.tsx
+├── context/              # Konteks untuk autentikasi
+│   └── AuthContext.tsx
+├── hooks/                # Custom hooks
+│   ├── useAuth.ts        # Hook untuk autentikasi
+│   └── useMenuData.ts    # Hook untuk operasi CRUD pada menu
+├── lib/                  # Library dan helper
+│   └── supabaseClient.ts # Inisialisasi Supabase client
+└── pages/                # Halaman utama
+    ├── Home.tsx
+    ├── Login.tsx
+    ├── Register.tsx
+    └── MenuPage.tsx
+```

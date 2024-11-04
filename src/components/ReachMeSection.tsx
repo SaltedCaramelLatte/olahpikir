@@ -38,18 +38,18 @@ const ReachMeSection = () => {
                             Contact me through the following platforms:
                         </p>
                         <div className="flex space-x-6 justify-center">
-                            <a href="https://linkedin.com/in/rahmat-079209247" target="_blank" rel="noopener noreferrer">
+                            <a href="#" target="_blank" rel="noopener noreferrer">
                                 <FaLinkedin className="text-light-secondary dark:text-dark-secondary text-4xl hover:text-light-primary dark:hover:text-dark-primary" />
                             </a>
-                            <a href="https://wa.me/082190303750" target="_blank" rel="noopener noreferrer">
+                            <a href="#" target="_blank" rel="noopener noreferrer">
                                 <FaWhatsapp className="text-green-500 text-4xl hover:text-green-700" />
                             </a>
-                            <a href="https://github.com/RahmatRafiq" target="_blank" rel="noopener noreferrer">
+                            <a href="#" target="_blank" rel="noopener noreferrer">
                                 <FaGithub className="text-gray-700 dark:text-dark-text text-4xl hover:text-black dark:hover:text-light-text" />
                             </a>
                         </div>
                         <p className="text-center text-light-text dark:text-dark-text">
-                            GitHub: <a href="https://github.com/RahmatRafiq" className="text-light-primary dark:text-dark-primary underline" target="_blank" rel="noopener noreferrer">RahmatRafiq</a>
+                            GitHub: <a href="#" className="text-light-primary dark:text-dark-primary underline" target="_blank" rel="noopener noreferrer">Wk</a>
                         </p>
                     </ModalBody>
                     <ModalFooter className="text-light-primary dark:text-white flex justify-center">
