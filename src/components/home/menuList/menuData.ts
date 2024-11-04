@@ -8,13 +8,15 @@ import tangerineImage from "@/images/coffee.jpg";
 import raspberryImage from "@/images/coffee.jpg";
 
 export interface MenuItemType {
-    id?: string;
+    id?: string; // Optional for new items
     title: string;
     img: string;
     price: string;
     description: string;
     status: string;
+    category?: string; // Optional
 }
+
 
 export const coffeeList: MenuItemType[] = [
     { title: "Espresso", img: espressoImage, price: "$4.00", description: "Strong and bold", status: "" },

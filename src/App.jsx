@@ -1,4 +1,3 @@
-// src/App.tsx
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import MenuListPage from './components/home/menuList/MenuListPage';
@@ -10,11 +9,11 @@ import { Outlet } from 'react-router-dom';
 const Layout = () => {
   return (
     <div>
-      <Navbar />  
+      <Navbar />
       <main className="min-h-screen bg-light-background dark:bg-dark-background py-10 px-4 lg:px-20">
-        <Outlet /> 
+        <Outlet />
       </main>
-      <Footer /> 
+      <Footer />
     </div>
   );
 };
