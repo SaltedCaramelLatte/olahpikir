@@ -11,7 +11,6 @@ import {
   DropdownMenu,
   Button,
 } from "@nextui-org/react";
-// import coffeeImage from "@/images/coffee.jpg";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 interface NavbarItemLinkProps {
@@ -44,7 +43,6 @@ export default function AppNavbar() {
       style={{ height: '60px' }}
     >
       <NavbarBrand>
-        {/* <img src={coffeeImage} alt="Logo" className="h-10 mr-2" /> */}
         <p className="font-bold text-primary dark:text-primary">Kedai Kopi</p>
       </NavbarBrand>
 
@@ -55,22 +53,27 @@ export default function AppNavbar() {
             key={item}
             href="#"
             label={item}
-            isActive={item === 'Customers'} // Change to proper active check
+            isActive={item === 'Customers'}
           />
         ))}
       </NavbarContent>
 
       {/* User Profile End Content */}
       <NavbarContent justify="end" className="flex items-center">
-        <Dropdown placement="bottom-end">
+        <Dropdown backdrop="blur" placement="bottom-end">
           <DropdownTrigger>
-            <button onClick={toggleMenu} className="p-2 text-secondary transition-transform">
+            <Button 
+              isIconOnly 
+              variant="bordered" 
+              className="p-2 text-secondary transition-transform hover:bg-light-accent dark:hover:bg-dark-accent"
+              onClick={toggleMenu}
+            >
               {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-            </button>
+            </Button>
           </DropdownTrigger>
-          <DropdownMenu aria-label="Profile Actions" variant="flat" className="bg-light-background dark:bg-dark-background">
+          <DropdownMenu variant="faded" aria-label="Profile Actions" className="bg-light-background dark:bg-dark-background">
             {['My Settings', 'Team Settings', 'Analytics'].map(item => (
-              <DropdownItem key={item.toLowerCase().replace(' ', '_')} className="text-light-text dark:text-dark-text">
+              <DropdownItem key={item.toLowerCase().replace(' ', '_')} className="text-light-text dark:text-dark-text hover:bg-light-accent dark:hover:bg-dark-accent">
                 {item}
               </DropdownItem>
             ))}
