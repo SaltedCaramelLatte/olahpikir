@@ -76,19 +76,34 @@ const MenuSection = () => {
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
                             {renderMenuItems(coffeeList, 0)}
                         </div>
-                        <Button className="mt-4" onClick={handleMoreClick}>More</Button>
+                        <Button
+                            onClick={handleMoreClick}
+                            className="mt-4 px-4 py-2 text-white bg-[#b45f33] rounded-full shadow-md hover:bg-[#9e4e29] transition duration-200"
+                        >
+                            More
+                        </Button>
                     </Tab>
                     <Tab key="non-coffee" title="Non-Coffee">
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
                             {renderMenuItems(nonCoffeeList, coffeeList.length)}
                         </div>
-                        <Button className="mt-4" onClick={handleMoreClick}>More</Button>
+                        <Button
+                            onClick={handleMoreClick}
+                            className="mt-4 px-4 py-2 text-white bg-[#b45f33] rounded-full shadow-md hover:bg-[#9e4e29] transition duration-200"
+                        >
+                            More
+                        </Button>
                     </Tab>
                     <Tab key="milk" title="Milk">
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
                             {renderMenuItems(milkList, coffeeList.length + nonCoffeeList.length)}
                         </div>
-                        <Button className="mt-4" onClick={handleMoreClick}>More</Button>
+                        <Button
+                            onClick={handleMoreClick}
+                            className="mt-4 px-4 py-2 text-white bg-[#b45f33] rounded-full shadow-md hover:bg-[#9e4e29] transition duration-200"
+                        >
+                            More
+                        </Button>
                     </Tab>
                 </Tabs>
             </div>
