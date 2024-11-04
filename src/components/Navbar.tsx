@@ -38,17 +38,16 @@ export default function AppNavbar() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <Navbar 
-      className="bg-transparent border-b border-light-border dark:border-dark-border backdrop-blur-md shadow-lg fixed top-0 left-0 w-full z-50" 
+    <Navbar
+      className="bg-transparent border-b border-light-border dark:border-dark-border backdrop-blur-md shadow-lg fixed top-0 left-0 w-full z-50"
       style={{ height: '60px' }}
     >
       <NavbarBrand>
         <p className="font-bold text-primary dark:text-primary">Kedai Kopi</p>
       </NavbarBrand>
 
-      {/* Main Menu - Desktop */}
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        {['Features', 'Customers', 'Integrations'].map((item, index) => (
+        {['Features', 'Customers', 'Integrations'].map((item) => (
           <NavbarItemLink
             key={item}
             href="#"
@@ -58,26 +57,43 @@ export default function AppNavbar() {
         ))}
       </NavbarContent>
 
-      {/* User Profile End Content */}
       <NavbarContent justify="end" className="flex items-center">
-        <Dropdown backdrop="blur" placement="bottom-end">
+        <Dropdown placement="bottom-end" backdrop="blur">
           <DropdownTrigger>
-            <Button 
-              isIconOnly 
-              variant="bordered" 
-              className="p-2 text-secondary transition-transform hover:bg-light-accent dark:hover:bg-dark-accent"
+            <Button
+              isIconOnly
+              variant="bordered"
               onClick={toggleMenu}
             >
               {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
             </Button>
           </DropdownTrigger>
-          <DropdownMenu variant="faded" aria-label="Profile Actions" className="bg-light-background dark:bg-dark-background">
-            {['My Settings', 'Team Settings', 'Analytics'].map(item => (
-              <DropdownItem key={item.toLowerCase().replace(' ', '_')} className="text-light-text dark:text-dark-text hover:bg-light-accent dark:hover:bg-dark-accent">
-                {item}
-              </DropdownItem>
-            ))}
+          <DropdownMenu
+
+            aria-label="Profile Actions"
+            variant="faded"
+            className="px-4 py-2 bg-light-background dark:bg-dark-background shadow-lg rounded-lg border border-light-border dark:border-dark-border"
+          >
+            <DropdownItem
+              key="features"
+              className="my-2 text-secondary hover:bg-light-accent dark:hover:bg-dark-accent rounded-md border border-transparent hover:border-light-border dark:hover:border-dark-border transition-colors duration-200"
+            >
+              Features
+            </DropdownItem>
+            <DropdownItem
+              key="customers"
+              className="my-2 text-secondary hover:bg-light-accent dark:hover:bg-dark-accent rounded-md border border-transparent hover:border-light-border dark:hover:border-dark-border transition-colors duration-200"
+            >
+              Customers
+            </DropdownItem>
+            <DropdownItem
+              key="integrations"
+              className="my-2 text-secondary hover:bg-light-accent dark:hover:bg-dark-accent rounded-md border border-transparent hover:border-light-border dark:hover:border-dark-border transition-colors duration-200"
+            >
+              Integrations
+            </DropdownItem>
           </DropdownMenu>
+
         </Dropdown>
       </NavbarContent>
     </Navbar>
