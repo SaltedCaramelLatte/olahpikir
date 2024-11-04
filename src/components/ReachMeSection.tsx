@@ -41,7 +41,7 @@ const ReachMeSection = () => {
                             <a href="https://linkedin.com/in/rahmat-079209247" target="_blank" rel="noopener noreferrer">
                                 <FaLinkedin className="text-light-secondary dark:text-dark-secondary text-4xl hover:text-light-primary dark:hover:text-dark-primary" />
                             </a>
-                            <a href="https://wa.me/082190303750" target="_blank" rel="noopener noreferrer">
+                            <a href="https://wa.me/+6282190303750" target="_blank" rel="noopener noreferrer">
                                 <FaWhatsapp className="text-green-500 text-4xl hover:text-green-700" />
                             </a>
                             <a href="https://github.com/RahmatRafiq" target="_blank" rel="noopener noreferrer">
