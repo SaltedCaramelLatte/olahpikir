@@ -24,9 +24,7 @@ const NavbarItemLink: React.FC<NavbarItemLinkProps> = ({ href, label, isActive }
     <Link
       href={href}
       aria-current={isActive ? "page" : undefined}
-      color={isActive ? "secondary" : "foreground"}
-      className={`text-${isActive ? 'primary' : 'light-text dark:text-dark-text'} 
-        ${isActive ? 'font-semibold' : 'hover:text-primary dark:hover:text-primary'}`}
+      className={`text-${isActive ? 'primary' : 'light-text'} dark:text-dark-text`}
     >
       {label}
     </Link>
@@ -64,36 +62,35 @@ export default function AppNavbar() {
               isIconOnly
               variant="bordered"
               onClick={toggleMenu}
+              className="text-secondary dark:text-dark-text hover:bg-light-accent dark:hover:bg-dark-accent"
             >
               {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
             </Button>
           </DropdownTrigger>
           <DropdownMenu
-
             aria-label="Profile Actions"
             variant="faded"
-            className="px-4 py-2 bg-light-background dark:bg-dark-background shadow-lg rounded-lg border border-light-border dark:border-dark-border"
+            className="bg-light-background dark:bg-dark-background shadow-lg rounded-lg border border-light-border dark:border-dark-border"
           >
             <DropdownItem
               key="features"
-              className="my-2 text-secondary hover:bg-light-accent dark:hover:bg-dark-accent rounded-md border border-transparent hover:border-light-border dark:hover:border-dark-border transition-colors duration-200"
+              className="my-2 text-secondary dark:text-dark-text hover:bg-light-accent dark:hover:bg-dark-accent rounded-md transition-colors duration-200 text-lg px-4 py-2"
             >
               Features
             </DropdownItem>
             <DropdownItem
               key="customers"
-              className="my-2 text-secondary hover:bg-light-accent dark:hover:bg-dark-accent rounded-md border border-transparent hover:border-light-border dark:hover:border-dark-border transition-colors duration-200"
+              className="my-2 text-secondary dark:text-dark-text hover:bg-light-accent dark:hover:bg-dark-accent rounded-md transition-colors duration-200 text-lg px-4 py-2"
             >
               Customers
             </DropdownItem>
             <DropdownItem
               key="integrations"
-              className="my-2 text-secondary hover:bg-light-accent dark:hover:bg-dark-accent rounded-md border border-transparent hover:border-light-border dark:hover:border-dark-border transition-colors duration-200"
+              className="my-2 text-secondary dark:text-dark-text hover:bg-light-accent dark:hover:bg-dark-accent rounded-md transition-colors duration-200 text-lg px-4 py-2"
             >
               Integrations
             </DropdownItem>
           </DropdownMenu>
-
         </Dropdown>
       </NavbarContent>
     </Navbar>
