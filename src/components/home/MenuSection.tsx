@@ -57,7 +57,7 @@ const MenuSection = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center bg-light-background dark:bg-dark-background min-h-screen py-10 px-4 lg:px-20">
+        <div className="flex flex-col items-center justify-center bg-light-background dark:bg-dark-background min-h-screen pt-24 px-4 lg:px-20">
             <h2 className="text-4xl font-bold text-primary mb-8 dark:text-gray-200">Our Menu</h2>
 
             <div className="w-full max-w-3xl">

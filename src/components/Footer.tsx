@@ -12,7 +12,9 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-white dark:bg-black text-black dark:text-white py-10 px-5">
+        <footer className="bg-white dark:bg-black text-black dark:text-white py-10 px-5 text-center pt-24">
+            {/* <section className="py-10 bg-light-background dark:bg-dark-background text-center pt-24"> */}
+            <h2 className="text-4xl font-bold text-primary mb-8 dark:text-gray-200">Find Us</h2>
             <Divider className="my-6 bg-gray-600 dark:bg-gray-500" />
 
             <Card
@@ -41,18 +43,18 @@ const Footer = () => {
                         <div className="flex flex-col col-span-6 md:col-span-8">
                             <div className="flex flex-col gap-2">
                                 <p className="text-lg font-medium text-black dark:text-white">
-                                    Email: 
-                                    <a 
-                                        href={`mailto:${footer.contact_email}`} 
+                                    Email:
+                                    <a
+                                        href={`mailto:${footer.contact_email}`}
                                         className="text-blue-400 dark:text-blue-300 hover:underline"
                                     >
                                         {footer.contact_email}
                                     </a>
                                 </p>
                                 <p className="text-lg text-gray-500 dark:text-gray-400">
-                                    Telepon: 
-                                    <a 
-                                        href={`tel:${footer.contact_phone}`} 
+                                    Telepon:
+                                    <a
+                                        href={`tel:${footer.contact_phone}`}
                                         className="text-blue-400 dark:text-blue-300 hover:underline"
                                     >
                                         {footer.contact_phone}
@@ -76,6 +78,7 @@ const Footer = () => {
                     <ThemeToggle />
                 </div>
             </div>
+            {/* </section> */}
         </footer>
     );
 };
