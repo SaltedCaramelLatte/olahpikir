@@ -78,6 +78,7 @@ export default function AppNavbar() {
               isIconOnly
               variant="bordered"
               onClick={toggleMenu}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"} // Menambahkan aria-label untuk aksesibilitas
               className="text-secondary dark:text-dark-text hover:bg-light-accent dark:hover:bg-dark-accent"
             >
               {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
