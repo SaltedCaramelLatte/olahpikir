@@ -14,7 +14,7 @@ import {
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const sections = [
-  { label: 'Hero', id: 'hero' },
+  { label: 'Home', id: 'home' },
   { label: 'Menu', id: 'menu' },
   { label: 'Gallery', id: 'gallery' }
 ];
@@ -34,7 +34,12 @@ export default function AppNavbar() {
     }
   };
 
-  const handleSectionClick = (id: string) => {
+  interface Section {
+    label: string;
+    id: string;
+  }
+
+  const handleSectionClick = (id: string): void => {
     scrollToSection(id);
     window.history.replaceState(null, '', `#${id}`);
     setIsMenuOpen(false); // Close menu after clicking an item
@@ -50,15 +55,17 @@ export default function AppNavbar() {
         <p className="font-bold text-primary dark:text-primary">Kedai Kopi</p>
       </NavbarBrand>
 
-      {/* Navbar content untuk layar besar, berada di tengah */}
+      {/* Navbar content for large screens, berada di tengah */}
       <NavbarContent className="hidden sm:flex gap-4 justify-center mx-auto" style={{ flex: 1 }}>
         {sections.map(section => (
           <NavbarItem key={section.id}>
             <Link
               href="#"
               aria-current={window.location.hash === `#${section.id}` ? "page" : undefined}
-              className="text-light-text dark:text-dark-text"
+              className={`${window.location.hash === `#${section.id}` ? "text-primary font-semibold" : "text-light-text"
+                } dark:text-dark-text`}
               onClick={() => handleSectionClick(section.id)}
+              style={{ padding: '8px 12px', borderRadius: '8px', transition: 'background 0.3s' }}
             >
               {section.label}
             </Link>
@@ -83,12 +90,15 @@ export default function AppNavbar() {
             aria-label="Navigation Menu"
             variant="faded"
             className="bg-light-background dark:bg-dark-background shadow-lg rounded-lg border border-light-border dark:border-dark-border"
+            style={{ width: '150px', padding: '8px 0' }} // Adjust the size and padding for proportional look
           >
             {sections.map(section => (
               <DropdownItem
                 key={section.id}
-                className="my-2 text-secondary dark:text-dark-text hover:bg-light-accent dark:hover:bg-dark-accent rounded-md transition-colors duration-200"
+                className={`my-2 text-secondary dark:text-dark-text rounded-md transition-colors duration-200 ${window.location.hash === `#${section.id}` ? "bg-primary text-white" : "hover:bg-light-accent dark:hover:bg-dark-accent"
+                  }`}
                 onClick={() => handleSectionClick(section.id)}
+                style={{ padding: '8px 12px' }}
               >
                 {section.label}
               </DropdownItem>
