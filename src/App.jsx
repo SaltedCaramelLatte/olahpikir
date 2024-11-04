@@ -1,7 +1,6 @@
-// src/App.tsx
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import MenuListPage from './components/home/menuList/MenuListPage';
+import CRUDPage from './pages/CRUDPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { Outlet } from 'react-router-dom';
@@ -24,7 +23,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="menu/:category" element={<MenuListPage />} /> {/* Rute dinamis */}
+          <Route path="crud" element={<CRUDPage />} /> {/* Rute untuk halaman CRUD */}
         </Route>
       </Routes>
     </Router>
