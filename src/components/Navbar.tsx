@@ -34,15 +34,15 @@ export default function AppNavbar() {
     }
   };
 
-  interface Section {
-    label: string;
-    id: string;
-  }
-
   const handleSectionClick = (id: string): void => {
-    scrollToSection(id);
-    window.history.replaceState(null, '', `#${id}`);
-    setIsMenuOpen(false); // Close menu after clicking an item
+    // Jika pengguna berada di halaman yang berbeda, arahkan ke root path dengan hash
+    if (window.location.pathname !== '/') {
+      window.location.href = `/#${id}`; // Kembali ke root dengan hash
+    } else {
+      // Jika sudah di root path, scroll ke section yang diinginkan
+      scrollToSection(id);
+    }
+    setIsMenuOpen(false); // Tutup menu setelah mengklik item
   };
 
   return (
@@ -50,12 +50,10 @@ export default function AppNavbar() {
       className="bg-transparent border-b border-light-border dark:border-dark-border backdrop-blur-md shadow-lg fixed top-0 left-0 w-full z-50 flex justify-between items-center"
       style={{ height: '60px' }}
     >
-      {/* NavbarBrand tetap di kiri */}
       <NavbarBrand className="ml-4">
         <p className="font-bold text-primary dark:text-primary">Kedai Kopi</p>
       </NavbarBrand>
 
-      {/* Navbar content for large screens, berada di tengah */}
       <NavbarContent className="hidden sm:flex gap-4 justify-center mx-auto" style={{ flex: 1 }}>
         {sections.map(section => (
           <NavbarItem key={section.id}>
@@ -73,7 +71,6 @@ export default function AppNavbar() {
         ))}
       </NavbarContent>
 
-      {/* Dropdown untuk navigasi di layar kecil, tetap di kanan */}
       <NavbarContent className="sm:hidden flex items-center mr-4" justify="end">
         <Dropdown isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} placement="bottom-end" backdrop="blur">
           <DropdownTrigger>
@@ -90,7 +87,7 @@ export default function AppNavbar() {
             aria-label="Navigation Menu"
             variant="faded"
             className="bg-light-background dark:bg-dark-background shadow-lg rounded-lg border border-light-border dark:border-dark-border"
-            style={{ width: '150px', padding: '8px 0' }} // Adjust the size and padding for proportional look
+            style={{ width: '150px', padding: '8px 0' }}
           >
             {sections.map(section => (
               <DropdownItem
