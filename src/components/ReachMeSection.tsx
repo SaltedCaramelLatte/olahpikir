@@ -19,7 +19,6 @@ const ReachMeSection = () => {
                 <span className="font-semibold">Who Made This?</span>
             </button>
 
-
             <Modal
                 isOpen={isOpen}
                 onClose={handleClose}
@@ -36,7 +35,7 @@ const ReachMeSection = () => {
                     </ModalHeader>
                     <ModalBody className="flex flex-col items-center space-y-4">
                         <p className="text-center text-light-text dark:text-dark-text">
-                            Hubungi saya melalui beberapa platform berikut:
+                            Contact me through the following platforms:
                         </p>
                         <div className="flex space-x-6 justify-center">
                             <a href="https://linkedin.com/in/rahmat-079209247" target="_blank" rel="noopener noreferrer">
