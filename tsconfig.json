@@ -13,13 +13,23 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "ziggy-js": ["./vendor/tightenco/ziggy"]
+      "@/*": [
+        "src/*"
+      ],
+      "ziggy-js": [
+        "./vendor/tightenco/ziggy"
+      ]
     },
-    "types": ["cypress", "node"]
+    "types": [
+      "cypress",
+      "node",
+      "vite/client"
+    ] // Tambahkan "vite/client" di sini
   },
   "include": [
-    "src/**/*" // Menyertakan semua file dalam src, lebih umum
+    "src/**/*"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }
