@@ -102,28 +102,47 @@ const MenuSection = () => {
             <div className="w-full max-w-3xl">
                 <Tabs
                     aria-label="Dynamic tabs"
-                    className="bg-darkl light:bg-dark-surface rounded-xl shadow-lg p-4 border border-gray-200 dark:border-gray-700"
                     style={{ marginTop: '20px' }}
                     selectedKey={activeTab}
                     classNames={{
+                        tabList: 'dark:text-gray-200 overflow-x-auto hide-scrollbar bg-transparent border border-gray-200 dark:border-gray-700 rounded-lg flex p-1',
                         base: 'mx-auto w-full',
-                        tabList: 'overflow-x-scroll mx-auto',
                     }}
                     variant="bordered"
                     onSelectionChange={(key) => setActiveTab(String(key))}
-
                 >
-                    <Tab key="coffee" title="Coffee">
+                    <Tab
+                        key="coffee"
+                        title="Coffee"
+                        className={`px-3 py-2 text-sm font-medium rounded-lg ${activeTab === "coffee"
+                            ? 'bg-dark-background text-white'
+                            : 'bg-light text-black font-bold'
+                            }`}
+                    >
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
                             {renderMenuItems(coffeeList, 0)}
                         </div>
                     </Tab>
-                    <Tab key="non-coffee" title="Non-Coffee">
+                    <Tab
+                        key="non-coffee"
+                        title="Non-Coffee"
+                        className={`px-3 py-2 text-sm font-medium rounded-lg ${activeTab === "non-coffee"
+                            ? 'bg-dark-background text-white'
+                            : 'bg-light text-black font-bold'
+                            }`}
+                    >
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
                             {renderMenuItems(nonCoffeeList, coffeeList.length)}
                         </div>
                     </Tab>
-                    <Tab key="milk" title="Milk">
+                    <Tab
+                        key="milk"
+                        title="Milk"
+                        className={`px-3 py-2 text-sm font-medium rounded-lg ${activeTab === "milk"
+                            ? 'bg-dark-background text-white'
+                            : 'bg-light text-black font-bold'
+                            }`}
+                    >
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
                             {renderMenuItems(milkList, coffeeList.length + nonCoffeeList.length)}
                         </div>

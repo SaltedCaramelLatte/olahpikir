@@ -5,11 +5,9 @@ import { MdOutlineComputer, MdOutlineDarkMode, MdOutlineLightMode } from "react-
 type Mode = 'light' | 'dark' | 'system';
 
 function ThemeToggle() {
-  // Ambil tema awal dari localStorage atau default ke 'system'
   const initialTheme = (localStorage.getItem('theme') as Mode) || 'system';
   const [theme, setTheme] = useState<Mode>(initialTheme);
 
-  // Mengatur tema awal saat pertama kali komponen dipasang
   useEffect(() => {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
@@ -23,9 +21,10 @@ function ThemeToggle() {
 
   return (
     <Tabs
+    
       classNames={{
-        panel: 'hidden', // Sembunyikan konten panel
-        tabList: 'bg-transparent border border-gray-200 dark:border-gray-700 rounded-lg flex p-1', // Styling minimalis untuk tab list
+        panel: 'hidden',
+        tabList: 'overflow-x-auto hide-scrollbar bg-transparent border border-gray-200 dark:border-gray-700 rounded-lg flex p-1', // Styling minimalis untuk tab list
       }}
       selectedKey={theme}
       onSelectionChange={(key) => {
@@ -33,14 +32,12 @@ function ThemeToggle() {
 
         setTheme(selectedTheme);
 
-        // Simpan tema di localStorage jika pilihannya 'light' atau 'dark'
         if (['dark', 'light'].includes(selectedTheme)) {
           localStorage.setItem('theme', selectedTheme);
         } else {
           localStorage.removeItem('theme'); // Hapus preferensi tema jika memilih 'system'
         }
 
-        // Terapkan tema pada elemen root
         if (selectedTheme === 'dark') {
           document.documentElement.classList.add('dark');
         } else {
