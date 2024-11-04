@@ -1,58 +1,15 @@
 // MenuSection.tsx
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import MenuItem from "./MenuItem";
-import { Tabs, Tab } from "@nextui-org/react";
-
-import espressoImage from "@/images/coffee_p.jpg";
-import latteImage from "@/images/coffee.jpg";
-import cappuccinoImage from "@/images/coffee.jpg";
-import milkImage from "@/images/coffee.jpg";
-import orangeImage from "@/images/coffee.jpg";
-import tangerineImage from "@/images/coffee.jpg";
-import raspberryImage from "@/images/coffee.jpg";
-
-interface MenuItemType {
-    title: string;
-    img: string;
-    price: string;
-    description: string;
-    status: string;
-}
-
-const coffeeList: MenuItemType[] = [
-    { title: "Espresso", img: espressoImage, price: "$4.00", description: "Strong and bold", status: "" },
-    { title: "Latte", img: latteImage, price: "$5.00", description: "Smooth and creamy", status: "" },
-    { title: "Cappuccino", img: cappuccinoImage, price: "$5.50", description: "Rich and frothy", status: "" },
-    { title: "Latte", img: latteImage, price: "$5.00", description: "Smooth and creamy", status: "" },
-    { title: "Cappuccino", img: cappuccinoImage, price: "$5.50", description: "Rich and frothy", status: "" },
-];
-
-const nonCoffeeList: MenuItemType[] = [
-    { title: "Orange", img: orangeImage, price: "$5.50", description: "Fresh and tangy", status: "" },
-    { title: "Tangerine", img: tangerineImage, price: "$3.00", description: "Sweet and juicy", status: "" },
-    { title: "Raspberry", img: raspberryImage, price: "$10.00", description: "Tart and sweet", status: "" },
-    { title: "Orange", img: orangeImage, price: "$5.50", description: "Fresh and tangy", status: "" },
-    { title: "Tangerine", img: tangerineImage, price: "$3.00", description: "Sweet and juicy", status: "" },
-    { title: "Raspberry", img: raspberryImage, price: "$10.00", description: "Tart and sweet", status: "" },
-];
-
-const milkList: MenuItemType[] = [
-    { title: "Whole Milk", img: milkImage, price: "$2.50", description: "Rich and creamy", status: "" },
-    { title: "Almond Milk", img: milkImage, price: "$3.00", description: "Nutty and smooth", status: "" },
-    { title: "Soy Milk", img: milkImage, price: "$3.00", description: "Light and healthy", status: "" },
-    { title: "Whole Milk", img: milkImage, price: "$2.50", description: "Rich and creamy", status: "" },
-    { title: "Almond Milk", img: milkImage, price: "$3.00", description: "Nutty and smooth", status: "" },
-    { title: "Soy Milk", img: milkImage, price: "$3.00", description: "Light and healthy", status: "" },
-    { title: "Whole Milk", img: milkImage, price: "$2.50", description: "Rich and creamy", status: "" },
-    { title: "Almond Milk", img: milkImage, price: "$3.00", description: "Nutty and smooth", status: "" },
-    { title: "Soy Milk", img: milkImage, price: "$3.00", description: "Light and healthy", status: "" },
-];
+import { Tabs, Tab, Button } from "@nextui-org/react";
+import { coffeeList, nonCoffeeList, milkList, MenuItemType } from "./menuList/menuData";
 
 const MenuSection = () => {
-    // Mengatur tab "coffee" sebagai default
     const [activeTab, setActiveTab] = useState<string>("coffee");
     const [visibleItems, setVisibleItems] = useState<boolean[]>(Array(coffeeList.length + nonCoffeeList.length + milkList.length).fill(false));
     const observer = useRef<IntersectionObserver | null>(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (observer.current) observer.current.disconnect();
@@ -95,6 +52,10 @@ const MenuSection = () => {
         ));
     };
 
+    const handleMoreClick = () => {
+        navigate(`/menu/${activeTab}`);
+    };
+
     return (
         <div className="flex flex-col items-center justify-center bg-light-background dark:bg-dark-background min-h-screen py-10 px-4 lg:px-20">
             <h2 className="text-4xl font-bold text-primary mb-8 dark:text-gray-200">Our Menu</h2>
@@ -111,41 +72,23 @@ const MenuSection = () => {
                     variant="bordered"
                     onSelectionChange={(key) => setActiveTab(String(key))}
                 >
-                    <Tab
-                        key="coffee"
-                        title="Coffee"
-                        className={`px-3 py-2 text-sm font-medium rounded-lg ${activeTab === "coffee"
-                            ? 'bg-dark-background text-white'
-                            : 'bg-light text-black font-bold'
-                            }`}
-                    >
+                    <Tab key="coffee" title="Coffee">
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
                             {renderMenuItems(coffeeList, 0)}
                         </div>
+                        <Button className="mt-4" onClick={handleMoreClick}>More</Button>
                     </Tab>
-                    <Tab
-                        key="non-coffee"
-                        title="Non-Coffee"
-                        className={`px-3 py-2 text-sm font-medium rounded-lg ${activeTab === "non-coffee"
-                            ? 'bg-dark-background text-white'
-                            : 'bg-light text-black font-bold'
-                            }`}
-                    >
+                    <Tab key="non-coffee" title="Non-Coffee">
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
                             {renderMenuItems(nonCoffeeList, coffeeList.length)}
                         </div>
+                        <Button className="mt-4" onClick={handleMoreClick}>More</Button>
                     </Tab>
-                    <Tab
-                        key="milk"
-                        title="Milk"
-                        className={`px-3 py-2 text-sm font-medium rounded-lg ${activeTab === "milk"
-                            ? 'bg-dark-background text-white'
-                            : 'bg-light text-black font-bold'
-                            }`}
-                    >
+                    <Tab key="milk" title="Milk">
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
                             {renderMenuItems(milkList, coffeeList.length + nonCoffeeList.length)}
                         </div>
+                        <Button className="mt-4" onClick={handleMoreClick}>More</Button>
                     </Tab>
                 </Tabs>
             </div>

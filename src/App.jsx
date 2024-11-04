@@ -1,13 +1,14 @@
 // src/App.tsx
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home'; // Pastikan jalur ini benar
+import Home from './pages/Home';
+import MenuListPage from './components/home/menuList/MenuListPage';
 
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* Anda dapat menambahkan route untuk halaman lain di sini */}
+        <Route path="/menu/:category" element={<MenuListPage />} /> {/* Rute dinamis */}
       </Routes>
     </Router>
   );
