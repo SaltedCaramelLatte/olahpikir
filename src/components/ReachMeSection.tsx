@@ -13,10 +13,12 @@ const ReachMeSection = () => {
         <>
             <button
                 onClick={handleOpen}
-                className="fixed bottom-4 right-4 bg-light-primary dark:bg-dark-primary text-white rounded-full p-4 shadow-lg hover:bg-light-accent dark:hover:bg-dark-accent transition z-50"
+                className="fixed bottom-4 right-4 flex items-center gap-2 bg-light-primary dark:bg-dark-primary text-white rounded-full py-2 px-6 shadow-lg hover:bg-light-accent dark:hover:bg-dark-accent transition z-50 hover:scale-105 transform"
             >
                 <FaUser size={24} />
+                <span className="font-semibold">Who Made This?</span>
             </button>
+
 
             <Modal
                 isOpen={isOpen}
