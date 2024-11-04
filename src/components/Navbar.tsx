@@ -13,50 +13,62 @@ import {
 } from "@nextui-org/react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
-interface NavbarItemLinkProps {
-  href: string;
-  label: string;
-  isActive: boolean;
-}
-
-const NavbarItemLink: React.FC<NavbarItemLinkProps> = ({ href, label, isActive }) => (
-  <NavbarItem isActive={isActive}>
-    <Link
-      href={href}
-      aria-current={isActive ? "page" : undefined}
-      className={`text-${isActive ? 'primary' : 'light-text'} dark:text-dark-text`}
-    >
-      {label}
-    </Link>
-  </NavbarItem>
-);
+const sections = [
+  { label: 'Hero', id: 'hero' },
+  { label: 'Menu', id: 'menu' },
+  { label: 'Gallery', id: 'gallery' }
+];
 
 export default function AppNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      const sectionTopOffset = section.offsetTop;
+      window.scrollTo({
+        top: sectionTopOffset,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const handleSectionClick = (id: string) => {
+    scrollToSection(id);
+    window.history.replaceState(null, '', `#${id}`);
+    setIsMenuOpen(false); // Close menu after clicking an item
+  };
+
   return (
     <Navbar
-      className="bg-transparent border-b border-light-border dark:border-dark-border backdrop-blur-md shadow-lg fixed top-0 left-0 w-full z-50"
+      className="bg-transparent border-b border-light-border dark:border-dark-border backdrop-blur-md shadow-lg fixed top-0 left-0 w-full z-50 flex justify-between items-center"
       style={{ height: '60px' }}
     >
-      <NavbarBrand>
+      {/* NavbarBrand tetap di kiri */}
+      <NavbarBrand className="ml-4">
         <p className="font-bold text-primary dark:text-primary">Kedai Kopi</p>
       </NavbarBrand>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        {['Features', 'Customers', 'Integrations'].map((item) => (
-          <NavbarItemLink
-            key={item}
-            href="#"
-            label={item}
-            isActive={item === 'Customers'}
-          />
+      {/* Navbar content untuk layar besar, berada di tengah */}
+      <NavbarContent className="hidden sm:flex gap-4 justify-center mx-auto" style={{ flex: 1 }}>
+        {sections.map(section => (
+          <NavbarItem key={section.id}>
+            <Link
+              href="#"
+              aria-current={window.location.hash === `#${section.id}` ? "page" : undefined}
+              className="text-light-text dark:text-dark-text"
+              onClick={() => handleSectionClick(section.id)}
+            >
+              {section.label}
+            </Link>
+          </NavbarItem>
         ))}
       </NavbarContent>
 
-      <NavbarContent justify="end" className="flex items-center">
-        <Dropdown placement="bottom-end" backdrop="blur">
+      {/* Dropdown untuk navigasi di layar kecil, tetap di kanan */}
+      <NavbarContent className="sm:hidden flex items-center mr-4" justify="end">
+        <Dropdown isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} placement="bottom-end" backdrop="blur">
           <DropdownTrigger>
             <Button
               isIconOnly
@@ -68,28 +80,19 @@ export default function AppNavbar() {
             </Button>
           </DropdownTrigger>
           <DropdownMenu
-            aria-label="Profile Actions"
+            aria-label="Navigation Menu"
             variant="faded"
             className="bg-light-background dark:bg-dark-background shadow-lg rounded-lg border border-light-border dark:border-dark-border"
           >
-            <DropdownItem
-              key="features"
-              className="my-2 text-secondary dark:text-dark-text hover:bg-light-accent dark:hover:bg-dark-accent rounded-md transition-colors duration-200 text-lg px-4 py-2"
-            >
-              Features
-            </DropdownItem>
-            <DropdownItem
-              key="customers"
-              className="my-2 text-secondary dark:text-dark-text hover:bg-light-accent dark:hover:bg-dark-accent rounded-md transition-colors duration-200 text-lg px-4 py-2"
-            >
-              Customers
-            </DropdownItem>
-            <DropdownItem
-              key="integrations"
-              className="my-2 text-secondary dark:text-dark-text hover:bg-light-accent dark:hover:bg-dark-accent rounded-md transition-colors duration-200 text-lg px-4 py-2"
-            >
-              Integrations
-            </DropdownItem>
+            {sections.map(section => (
+              <DropdownItem
+                key={section.id}
+                className="my-2 text-secondary dark:text-dark-text hover:bg-light-accent dark:hover:bg-dark-accent rounded-md transition-colors duration-200"
+                onClick={() => handleSectionClick(section.id)}
+              >
+                {section.label}
+              </DropdownItem>
+            ))}
           </DropdownMenu>
         </Dropdown>
       </NavbarContent>
