@@ -42,7 +42,7 @@ const MenuSection = () => {
     }, [activeTab]);
 
     const renderMenuItems = (list: MenuItemType[], offset: number) => {
-        return list.map((item, index) => (
+        return list.slice(0, 3).map((item, index) => (
             <MenuItem
                 item={item}
                 index={index + offset}
