@@ -1,4 +1,3 @@
-// src/components/menuAdmin/AddMenuItem.tsx
 import { useState } from 'react';
 import { MenuItemType } from '../home/menuList/menuData';
 

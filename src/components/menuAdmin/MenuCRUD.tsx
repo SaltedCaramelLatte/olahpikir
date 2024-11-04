@@ -1,4 +1,3 @@
-// src/components/menuAdmin/MenuCRUD.tsx
 import { useState } from 'react';
 import MenuItemList from './MenuItemList';
 import AddMenuItem from './AddMenuItem';

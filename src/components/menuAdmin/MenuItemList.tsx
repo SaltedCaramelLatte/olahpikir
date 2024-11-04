@@ -1,4 +1,3 @@
-// src/components/menuAdmin/MenuItemList.tsx
 import { MenuItemType } from '../home/menuList/menuData';
 
 interface MenuItemListProps {
