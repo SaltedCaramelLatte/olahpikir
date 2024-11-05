@@ -1,13 +1,15 @@
-// MenuSection.tsx
+// components/home/menuList/MenuSection.tsx
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MenuItem from "./MenuItem";
 import { Tabs, Tab, Button } from "@nextui-org/react";
-import { coffeeList, nonCoffeeList, milkList, MenuItemType } from "./menuList/menuData";
+import { useMenuData } from "../../hooks/useMenuData";
+import { MenuItemType } from "./menuList/menuData";
 
 const MenuSection = () => {
+    const { menuItems, loading } = useMenuData(); // Ambil data dari Supabase
     const [activeTab, setActiveTab] = useState<string>("coffee");
-    const [visibleItems, setVisibleItems] = useState<boolean[]>(Array(coffeeList.length + nonCoffeeList.length + milkList.length).fill(false));
+    const [visibleItems, setVisibleItems] = useState<boolean[]>(Array(menuItems.length).fill(false));
     const observer = useRef<IntersectionObserver | null>(null);
     const navigate = useNavigate();
 
@@ -39,7 +41,16 @@ const MenuSection = () => {
         return () => {
             observer.current?.disconnect();
         };
-    }, [activeTab]);
+    }, [activeTab, menuItems]);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    // Filter data berdasarkan kategori
+    const coffeeItems = menuItems.filter(item => item.category === "coffee");
+    const nonCoffeeItems = menuItems.filter(item => item.category === "non-coffee");
+    const milkItems = menuItems.filter(item => item.category === "milk");
 
     const renderMenuItems = (list: MenuItemType[], offset: number) => {
         return list.slice(0, 4).map((item, index) => (
@@ -74,7 +85,7 @@ const MenuSection = () => {
                 >
                     <Tab key="coffee" title="Coffee">
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
-                            {renderMenuItems(coffeeList, 0)}
+                            {renderMenuItems(coffeeItems, 0)}
                         </div>
                         <Button
                             onClick={handleMoreClick}
@@ -85,7 +96,7 @@ const MenuSection = () => {
                     </Tab>
                     <Tab key="non-coffee" title="Non-Coffee">
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
-                            {renderMenuItems(nonCoffeeList, coffeeList.length)}
+                            {renderMenuItems(nonCoffeeItems, coffeeItems.length)}
                         </div>
                         <Button
                             onClick={handleMoreClick}
@@ -96,7 +107,7 @@ const MenuSection = () => {
                     </Tab>
                     <Tab key="milk" title="Milk">
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
-                            {renderMenuItems(milkList, coffeeList.length + nonCoffeeList.length)}
+                            {renderMenuItems(milkItems, coffeeItems.length + nonCoffeeItems.length)}
                         </div>
                         <Button
                             onClick={handleMoreClick}
