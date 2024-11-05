@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { MenuItemType } from '../home/menuList/menuData';
+import { Input, Button, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter } from "@nextui-org/react";
 
 interface EditMenuItemProps {
     item: MenuItemType;
@@ -24,16 +25,64 @@ const EditMenuItem = ({ item, onSave, onCancel }: EditMenuItemProps) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Edit Menu Item</h2>
-            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" required />
-            <input type="text" value={img} onChange={(e) => setImg(e.target.value)} placeholder="Image URL" required />
-            <input type="text" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Price" required />
-            <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" required />
-            <input type="text" value={status} onChange={(e) => setStatus(e.target.value)} placeholder="Status" />
-            <button type="submit">Save Changes</button>
-            <button type="button" onClick={onCancel}>Cancel</button>
-        </form>
+        <Modal isOpen onClose={onCancel} backdrop="blur" placement="center">
+            <ModalContent className="bg-light-background dark:bg-dark-background rounded-lg">
+                <ModalHeader>
+                    <h2 className="text-light-primary dark:text-dark-primary">Edit Menu Item</h2>
+                </ModalHeader>
+                <ModalBody>
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                        <Input
+                            label="Title"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            fullWidth
+                            required
+                            className="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text"
+                        />
+                        <Input
+                            label="Image URL"
+                            value={img}
+                            onChange={(e) => setImg(e.target.value)}
+                            fullWidth
+                            required
+                            className="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text"
+                        />
+                        <Input
+                            label="Price"
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                            fullWidth
+                            required
+                            className="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text"
+                        />
+                        <Input
+                            label="Description"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            fullWidth
+                            required
+                            className="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text"
+                        />
+                        <Input
+                            label="Status"
+                            value={status}
+                            onChange={(e) => setStatus(e.target.value)}
+                            fullWidth
+                            className="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text"
+                        />
+                    </form>
+                </ModalBody>
+                <ModalFooter>
+                    <Button color="primary" onClick={handleSubmit}>
+                        Save Changes
+                    </Button>
+                    <Button color="danger" variant="light" onPress={onCancel}>
+                        Cancel
+                    </Button>
+                </ModalFooter>
+            </ModalContent>
+        </Modal>
     );
 };
 
