@@ -1,15 +1,16 @@
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Button } from "@nextui-org/react";
 import { useState } from 'react';
+import DataTable from '../customComponent/DataTable'; // Sesuaikan path
 import AddMenuItem from './AddMenuItem';
 import EditMenuItem from './EditMenuItem';
 import { MenuItemType } from '../home/menuList/menuData';
 import { useMenuData } from '../../hooks/useMenuData';
+import { Button } from '@nextui-org/button';
 
 const MenuCRUD = () => {
     const { menuItems, loading, addMenuItem, editMenuItem, deleteMenuItem } = useMenuData();
     const [editingItem, setEditingItem] = useState<MenuItemType | null>(null);
 
-    const columns: { Header: string; accessor: keyof MenuItemType | 'actions'; Cell?: (props: any) => JSX.Element }[] = [
+    const columns = [
         { Header: 'Title', accessor: 'title' },
         { Header: 'Description', accessor: 'description' },
         { Header: 'Price', accessor: 'price' },
@@ -19,10 +20,21 @@ const MenuCRUD = () => {
             accessor: 'actions',
             Cell: ({ row }: any) => (
                 <div>
-                    <Button color="primary" size="sm" onClick={() => setEditingItem(row.original)}>
+                    <Button
+                        onClick={() => setEditingItem(row.original)}
+                        className="text-sm bg-light-danger dark:bg-danger text-white dark:text-light mt-2 mb-2 ml-2 mr-2"
+                        radius="full"
+                        size="sm"
+                    >
                         Edit
                     </Button>
-                    <Button color="danger" size="sm" onClick={() => deleteMenuItem(row.original.id)} className="ml-2">
+                    
+                    <Button
+                        onClick={() => deleteMenuItem(row.original.id)}
+                        className="text-sm bg-light-warning dark:bg-warning text-white dark:text-light mt-2 mb-2 ml-2 mr-2"
+                        radius="full"
+                        size="sm"
+                    >
                         Delete
                     </Button>
                 </div>
@@ -30,14 +42,12 @@ const MenuCRUD = () => {
         },
     ];
 
-    const data: (MenuItemType & { actions?: string })[] = menuItems.map((item) => ({
+    const data = menuItems.map((item) => ({
         id: item.id,
         title: item.title,
         description: item.description,
         price: item.price,
         category: item.category,
-        img: item.img,
-        status: item.status,
     }));
 
     if (loading) return <div>Loading menu items...</div>;
@@ -69,20 +79,7 @@ const MenuCRUD = () => {
                             }
                         }}
                     />
-                    <Table aria-label="Menu Items Table">
-                        <TableHeader columns={columns}>
-                            {(column) => <TableColumn key={column.accessor}>{column.Header}</TableColumn>}
-                        </TableHeader>
-                        <TableBody items={data}>
-                            {(item) => (
-                                <TableRow key={item.id}>
-                                    {columns.map((col) => (
-                                        <TableCell key={col.accessor}>{item[col.accessor]}</TableCell>
-                                    ))}
-                                </TableRow>
-                            )}
-                        </TableBody>
-                    </Table>
+                    <DataTable columns={columns} data={data} />
                 </div>
             )}
         </div>

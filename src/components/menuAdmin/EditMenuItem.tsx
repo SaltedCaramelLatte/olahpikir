@@ -25,54 +25,67 @@ const EditMenuItem = ({ item, onSave, onCancel }: EditMenuItemProps) => {
     };
 
     return (
-        <Modal isOpen onClose={onCancel} backdrop="blur" placement="center">
+        <Modal
+            size='lg'
+            isOpen
+            onClose={onCancel}
+            placement="center"
+        >
             <ModalContent className="bg-light-background dark:bg-dark-background rounded-lg">
                 <ModalHeader>
                     <h2 className="text-light-primary dark:text-dark-primary">Edit Menu Item</h2>
                 </ModalHeader>
                 <ModalBody>
-                    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                    <div className="flex flex-row gap-4 flex-wrap">
                         <Input
-                            label="Title"
+                            label="Enter title"
+                            fullWidth={true}
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
-                            fullWidth
                             required
-                            className="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text"
+                            labelPlacement="outside"
+                            placeholder="Enter title"
+                            className="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text flex-grow"
                         />
                         <Input
-                            label="Image URL"
+                            label="Enter image URL"
                             value={img}
                             onChange={(e) => setImg(e.target.value)}
-                            fullWidth
                             required
-                            className="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text"
+                            labelPlacement="outside"
+                            placeholder="Enter image URL"
+                            className="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text flex-grow"
                         />
                         <Input
-                            label="Price"
+                            label="Enter price"
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
-                            fullWidth
                             required
-                            className="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text"
+                            type="number"
+                            labelPlacement="outside"
+                            placeholder="0.00"
+                            className="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text flex-grow"
                         />
                         <Input
-                            label="Description"
+                            label="Enter description"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
-                            fullWidth
                             required
-                            className="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text"
+                            labelPlacement="outside"
+                            placeholder="Enter description"
+                            className="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text flex-grow"
                         />
                         <Input
-                            label="Status"
+                            label="Enter status"
                             value={status}
                             onChange={(e) => setStatus(e.target.value)}
-                            fullWidth
-                            className="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text"
+                            labelPlacement="outside"
+                            placeholder="Enter status"
+                            className="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text flex-grow"
                         />
-                    </form>
+                    </div>
                 </ModalBody>
+
                 <ModalFooter>
                     <Button color="primary" onClick={handleSubmit}>
                         Save Changes

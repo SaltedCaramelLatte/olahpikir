@@ -14,7 +14,7 @@ const Footer = () => {
     return (
         <footer className="bg-white dark:bg-black text-black dark:text-white py-10 px-5 text-center pt-24">
             {/* <section className="py-10 bg-light-background dark:bg-dark-background text-center pt-24"> */}
-            <h2 className="text-4xl font-bold text-primary mb-8 dark:text-gray-200">Find Us</h2>
+            <h2 className="text-4xl font-bold text-light mb-8 dark:text-gray-200">Find Us</h2>
             <Divider className="my-6 bg-gray-600 dark:bg-gray-500" />
 
             <Card
