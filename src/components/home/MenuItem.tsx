@@ -1,6 +1,7 @@
-// MenuItem.tsx
+// components/home/menuList/MenuItem.tsx
 import { Card, CardHeader, CardFooter, Image, Button } from "@nextui-org/react";
 import { useState } from "react";
+import fallbackImage from "@/images/coffee.jpg"; // Import gambar fallback
 
 interface MenuItemProps {
     item: {
@@ -37,22 +38,16 @@ const MenuItem = ({ item, index, visible }: MenuItemProps) => {
                             </h4>
                         </CardHeader>
 
-                        {imageError ? (
-                            <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-500 flex items-center justify-center">
-                                <p className="text-white text-lg">Image Not Available</p>
-                            </div>
-                        ) : (
-                            <Image
-                                removeWrapper
-                                alt={item.title}
-                                className="z-0 w-full h-full object-cover scale-125 -translate-y-4"
-                                src={item.img}
-                                onError={() => setImageError(true)}
-                                style={{
-                                    opacity: visible ? 1 : 0.3,
-                                }}
-                            />
-                        )}
+                        <Image
+                            removeWrapper
+                            alt={item.title}
+                            className="z-0 w-full h-full object-cover scale-125 -translate-y-4"
+                            src={imageError || !item.img ? fallbackImage : item.img} // Gunakan fallback jika img tidak ada atau error
+                            onError={() => setImageError(true)}
+                            style={{
+                                opacity: visible ? 1 : 0.3,
+                            }}
+                        />
 
                         <CardFooter className="absolute bg-white/30 backdrop-blur-sm bottom-0 border-t border-zinc-100/50 z-10 w-full flex justify-between items-center p-4">
                             <div>

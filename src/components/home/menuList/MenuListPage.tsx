@@ -1,22 +1,28 @@
 // components/home/menuList/MenuListPage.tsx
 import { useParams, useNavigate } from "react-router-dom";
 import MenuItem from "../MenuItem";
-import { coffeeList, nonCoffeeList, milkList, MenuItemType } from "./menuData";
 import { Button } from "@nextui-org/react";
-import { useEffect } from "react"; // Import useEffect
+import { useEffect } from "react";
+import { useMenuData } from '../../../hooks/useMenuData';
+import { MenuItemType } from './menuData';
 
 const MenuListPage = () => {
     const { category } = useParams<{ category: string }>();
+    const { menuItems, loading } = useMenuData(); // Ambil data dari hook
     const navigate = useNavigate();
-
-    let itemsToDisplay: MenuItemType[] = [];
-    if (category === "coffee") itemsToDisplay = coffeeList;
-    else if (category === "non-coffee") itemsToDisplay = nonCoffeeList;
-    else if (category === "milk") itemsToDisplay = milkList;
 
     useEffect(() => {
         window.scrollTo(0, 0); // Scroll ke atas saat halaman dimuat
     }, []);
+
+    // Filter items berdasarkan kategori yang diterima dari parameter URL
+    const itemsToDisplay: MenuItemType[] = menuItems.filter(
+        (item) => item.category === category
+    );
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <section className="flex flex-col items-center justify-center min-h-screen bg-light-background dark:bg-dark-background py-10 px-4 lg:px-20">

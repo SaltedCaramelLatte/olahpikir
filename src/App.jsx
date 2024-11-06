@@ -1,19 +1,19 @@
-// src/App.tsx
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import MenuListPage from './components/home/menuList/MenuListPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import MenuCRUD from './components/menuAdmin/MenuCRUD';
 import { Outlet } from 'react-router-dom';
 
 const Layout = () => {
   return (
     <div>
-      <Navbar />  {/* Navbar akan muncul di setiap halaman */}
+      <Navbar />
       <main className="min-h-screen bg-light-background dark:bg-dark-background py-10 px-4 lg:px-20">
-        <Outlet />  {/* Tempat komponen halaman yang dinamis akan dirender */}
+        <Outlet />
       </main>
-      <Footer />  {/* Footer juga akan muncul di setiap halaman */}
+      <Footer />
     </div>
   );
 };
@@ -24,7 +24,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="menu/:category" element={<MenuListPage />} /> {/* Rute dinamis */}
+          <Route path="menu/:category" element={<MenuListPage />} />
+          <Route path="admin/menu" element={<MenuCRUD />} />
         </Route>
       </Routes>
     </Router>

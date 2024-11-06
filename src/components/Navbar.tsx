@@ -51,7 +51,7 @@ export default function AppNavbar() {
       style={{ height: '60px' }}
     >
       <NavbarBrand className="ml-4">
-        <p className="font-bold text-primary dark:text-primary">Kedai Kopi</p>
+        <p className="font-bold text-light dark:text-light">Kedai Kopi</p>
       </NavbarBrand>
 
       <NavbarContent className="hidden sm:flex gap-4 justify-center mx-auto" style={{ flex: 1 }}>
@@ -60,7 +60,7 @@ export default function AppNavbar() {
             <Link
               href="#"
               aria-current={window.location.hash === `#${section.id}` ? "page" : undefined}
-              className={`${window.location.hash === `#${section.id}` ? "text-primary font-semibold" : "text-light-text"
+              className={`${window.location.hash === `#${section.id}` ? "text-light font-semibold" : "text-light-text"
                 } dark:text-dark-text`}
               onClick={() => handleSectionClick(section.id)}
               style={{ padding: '8px 12px', borderRadius: '8px', transition: 'background 0.3s' }}
@@ -93,7 +93,7 @@ export default function AppNavbar() {
             {sections.map(section => (
               <DropdownItem
                 key={section.id}
-                className={`my-2 text-secondary dark:text-dark-text rounded-md transition-colors duration-200 ${window.location.hash === `#${section.id}` ? "bg-primary text-white" : "hover:bg-light-accent dark:hover:bg-dark-accent"
+                className={`my-2 text-secondary dark:text-dark-text rounded-md transition-colors duration-200 ${window.location.hash === `#${section.id}` ? "bg-light text-white" : "hover:bg-light-accent dark:hover:bg-dark-accent"
                   }`}
                 onClick={() => handleSectionClick(section.id)}
                 style={{ padding: '8px 12px' }}

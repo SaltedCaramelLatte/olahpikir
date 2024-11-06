@@ -1,4 +1,4 @@
-// menuData.ts
+// src/components/home/menuList/menuData.ts
 import espressoImage from "@/images/coffee_p.jpg";
 import latteImage from "@/images/coffee.jpg";
 import cappuccinoImage from "@/images/coffee.jpg";
@@ -8,12 +8,15 @@ import tangerineImage from "@/images/coffee.jpg";
 import raspberryImage from "@/images/coffee.jpg";
 
 export interface MenuItemType {
+    id?: string; // Optional for new items
     title: string;
     img: string;
     price: string;
     description: string;
     status: string;
+    category?: string; // Optional
 }
+
 
 export const coffeeList: MenuItemType[] = [
     { title: "Espresso", img: espressoImage, price: "$4.00", description: "Strong and bold", status: "" },
