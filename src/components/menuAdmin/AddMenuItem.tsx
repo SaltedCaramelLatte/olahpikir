@@ -6,6 +6,7 @@ import { MenuItemType } from '../home/menuList/menuData';
 interface AddMenuItemProps {
     onAdd: (newItem: Partial<MenuItemType>) => Promise<void>;
     uploadImageAndGetUrl: (file: File) => Promise<string | null>;
+    isSubmitting: boolean;
 }
 
 const AddMenuItem = ({ onAdd, uploadImageAndGetUrl }: AddMenuItemProps) => {

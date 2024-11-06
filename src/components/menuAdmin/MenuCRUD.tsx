@@ -9,6 +9,7 @@ import { Button } from '@nextui-org/button';
 const MenuCRUD = () => {
     const { menuItems, loading, addMenuItem, editMenuItem, deleteMenuItem, uploadImageAndGetUrl } = useMenuData();
     const [editingItem, setEditingItem] = useState<MenuItemType | null>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false); // Status penyimpanan
 
     const columns = [
         { Header: 'Title', accessor: 'title' },
@@ -50,6 +51,27 @@ const MenuCRUD = () => {
         category: item.category,
     }));
 
+    const handleAddItem = async (newItem: Partial<MenuItemType>) => {
+        if (!newItem.title || !newItem.img || !newItem.price || !newItem.description) {
+            alert("Please fill in all required fields.");
+            return;
+        }
+        setIsSubmitting(true); // Mulai proses penyimpanan
+        await addMenuItem({
+            ...newItem,
+            status: newItem.status || 'available',
+            category: newItem.category || 'coffee',
+        } as MenuItemType);
+        setIsSubmitting(false); // Selesai penyimpanan
+    };
+
+    const handleEditItem = async (id: string, updatedItem: Partial<MenuItemType>) => {
+        setIsSubmitting(true); // Mulai proses pengeditan
+        await editMenuItem(id, updatedItem);
+        setIsSubmitting(false); // Selesai pengeditan
+        setEditingItem(null); // Tutup form edit setelah selesai
+    };
+
     if (loading) return <div>Loading menu items...</div>;
 
     return (
@@ -58,28 +80,17 @@ const MenuCRUD = () => {
             {editingItem ? (
                 <EditMenuItem
                     item={editingItem}
-                    onSave={(id, updatedItem) => {
-                        editMenuItem(id, updatedItem);
-                        setEditingItem(null);
-                    }}
+                    onSave={handleEditItem}
                     onCancel={() => setEditingItem(null)}
-                    uploadImageAndGetUrl={uploadImageAndGetUrl} // Pass uploadImageAndGetUrl ke EditMenuItem
+                    uploadImageAndGetUrl={uploadImageAndGetUrl}
+                    isSubmitting={isSubmitting} // Kirim isSubmitting ke EditMenuItem
                 />
             ) : (
                 <div>
                     <AddMenuItem
-                        onAdd={async (newItem: Partial<MenuItemType>) => {
-                            if (newItem.title && newItem.img && newItem.price && newItem.description) {
-                                await addMenuItem({
-                                    ...newItem,
-                                    status: newItem.status || 'available',
-                                    category: newItem.category || 'coffee',
-                                } as MenuItemType);
-                            } else {
-                                alert("Please fill in all required fields.");
-                            }
-                        }}
-                        uploadImageAndGetUrl={uploadImageAndGetUrl} // Pass uploadImageAndGetUrl ke AddMenuItem
+                        onAdd={handleAddItem}
+                        uploadImageAndGetUrl={uploadImageAndGetUrl}
+                        isSubmitting={isSubmitting} // Kirim isSubmitting ke AddMenuItem
                     />
                     <DataTable columns={columns} data={data} />
                 </div>

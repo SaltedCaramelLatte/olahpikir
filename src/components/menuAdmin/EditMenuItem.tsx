@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { MenuItemType } from '../home/menuList/menuData';
 import { Input, Button, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter } from "@nextui-org/react";
@@ -8,21 +8,32 @@ interface EditMenuItemProps {
     onSave: (id: string, updatedItem: Partial<MenuItemType>) => void;
     onCancel: () => void;
     uploadImageAndGetUrl: (file: File) => Promise<string | null>;
+    isSubmitting: boolean;
 }
 
-const EditMenuItem = ({ item, onSave, onCancel, uploadImageAndGetUrl }: EditMenuItemProps) => {
+const EditMenuItem = ({ item, onSave, onCancel, uploadImageAndGetUrl, isSubmitting }: EditMenuItemProps) => {
     const [title, setTitle] = useState(item.title);
-    const [img, setImg] = useState(item.img); // State untuk menyimpan URL gambar
+    const [img, setImg] = useState(item.img); // State untuk URL gambar
     const [price, setPrice] = useState(item.price);
     const [description, setDescription] = useState(item.description);
     const [status, setStatus] = useState(item.status);
 
+    // Mengupdate state saat item berubah
+    useEffect(() => {
+        setTitle(item.title);
+        setImg(item.img); // Memastikan gambar lama termuat
+        setPrice(item.price);
+        setDescription(item.description);
+        setStatus(item.status);
+    }, [item]);
+
+    // Fungsi untuk mengunggah gambar baru melalui Dropzone
     const onDrop = useCallback(async (acceptedFiles: File[]) => {
         const file = acceptedFiles[0];
         if (file) {
             const url = await uploadImageAndGetUrl(file);
             if (url) {
-                setImg(url); // Update URL gambar baru setelah di-upload
+                setImg(url); // Mengganti gambar lama dengan yang baru
             }
         }
     }, [uploadImageAndGetUrl]);
@@ -70,7 +81,16 @@ const EditMenuItem = ({ item, onSave, onCancel, uploadImageAndGetUrl }: EditMenu
                                     <p>Drag & drop an image here, or click to select one</p>
                                 )}
                             </div>
-                            {img && <img src={img} alt="Preview" style={{ width: '100px', marginTop: '10px' }} />}
+                            {/* Tampilkan gambar lama atau gambar baru yang diunggah */}
+                            {img && (
+                                <div style={{ textAlign: 'center', marginTop: '10px' }}>
+                                    <img
+                                        src={img}
+                                        alt="Preview"
+                                        style={{ width: '100px', height: 'auto', borderRadius: '5px' }}
+                                    />
+                                </div>
+                            )}
                             <Input
                                 label="Price"
                                 value={price}
@@ -94,8 +114,8 @@ const EditMenuItem = ({ item, onSave, onCancel, uploadImageAndGetUrl }: EditMenu
                             />
                         </div>
                         <ModalFooter>
-                            <Button color="primary" type="submit">
-                                Save Changes
+                            <Button color="primary" type="submit" disabled={isSubmitting}>
+                                {isSubmitting ? 'Saving...' : 'Save Changes'}
                             </Button>
                             <Button color="danger" variant="light" onClick={onCancel}>
                                 Cancel
