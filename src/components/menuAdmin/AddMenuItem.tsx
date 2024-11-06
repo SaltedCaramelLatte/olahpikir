@@ -9,7 +9,7 @@ interface AddMenuItemProps {
     isSubmitting: boolean;
 }
 
-const AddMenuItem = ({ onAdd, uploadImageAndGetUrl }: AddMenuItemProps) => {
+const AddMenuItem = ({ onAdd, uploadImageAndGetUrl, isSubmitting }: AddMenuItemProps) => {
     const [title, setTitle] = useState('');
     const [imgUrl, setImgUrl] = useState(''); // Menyimpan URL gambar yang di-upload
     const [price, setPrice] = useState('');
@@ -32,6 +32,10 @@ const AddMenuItem = ({ onAdd, uploadImageAndGetUrl }: AddMenuItemProps) => {
         accept: { 'image/*': ['.png', '.jpg', '.jpeg', '.gif'] },
     });
 
+    const handleRemoveImage = () => {
+        setImgUrl('');
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!title || !imgUrl || !price || !description) {
@@ -48,7 +52,6 @@ const AddMenuItem = ({ onAdd, uploadImageAndGetUrl }: AddMenuItemProps) => {
             status,
             category
         });
-
 
         setTitle('');
         setImgUrl('');
@@ -70,11 +73,28 @@ const AddMenuItem = ({ onAdd, uploadImageAndGetUrl }: AddMenuItemProps) => {
                     required
                     placeholder="Enter title"
                 />
-                <div {...getRootProps()} className="dropzone border p-4 text-center">
+                
+                <div {...getRootProps()} className="dropzone border p-4 text-center rounded-lg cursor-pointer">
                     <input {...getInputProps()} />
-                    {isDragActive ? <p>Drop the files here...</p> : <p>Drag & drop an image here, or click to select one</p>}
+                    {isDragActive ? (
+                        <p>Drop the files here...</p>
+                    ) : imgUrl ? (
+                        <div className="relative">
+                            <img src={imgUrl} alt="Preview" className="w-24 h-24 mx-auto" />
+                            <button
+                                onClick={handleRemoveImage}
+                                type="button"
+                                className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1 text-xs"
+                                aria-label="Remove image"
+                            >
+                                ×
+                            </button>
+                        </div>
+                    ) : (
+                        <p>Drag & drop an image here, or click to select one</p>
+                    )}
                 </div>
-                {imgUrl && <img src={imgUrl} alt="Preview" style={{ width: '100px', marginTop: '10px' }} />}
+
                 <Input
                     label="Price"
                     value={price}
@@ -109,8 +129,8 @@ const AddMenuItem = ({ onAdd, uploadImageAndGetUrl }: AddMenuItemProps) => {
                     <option value="milk">Milk</option>
                     <option value="tea">Tea</option>
                 </select>
-                <Button type="submit" color="primary" fullWidth>
-                    Add Item
+                <Button type="submit" color="primary" fullWidth disabled={isSubmitting}>
+                    {isSubmitting ? 'Adding...' : 'Add Item'}
                 </Button>
             </form>
         </div>

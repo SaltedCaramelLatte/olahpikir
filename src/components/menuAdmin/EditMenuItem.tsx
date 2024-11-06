@@ -41,16 +41,19 @@ const EditMenuItem = ({ item, onSave, onCancel, uploadImageAndGetUrl, isSubmitti
         accept: { 'image/*': ['.png', '.jpg', '.jpeg', '.gif'] },
     });
 
-    // Fungsi untuk membersihkan input harga dari karakter non-angka
+    const handleRemoveImage = () => {
+        setImg(''); // Menghapus URL gambar
+    };
+
     const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value.replace(/[^\d.]/g, ''); // Menghapus semua karakter kecuali angka dan titik desimal
+        const value = e.target.value.replace(/[^\d.]/g, '');
         setPrice(value);
     };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (item.id) {
-            const formattedPrice = parseFloat(price).toFixed(2); // Pastikan angka dalam format dua desimal
+            const formattedPrice = parseFloat(price).toFixed(2);
             onSave(item.id, { title, img, price: formattedPrice, description, status });
         } else {
             console.error("No ID found for item");
@@ -78,23 +81,26 @@ const EditMenuItem = ({ item, onSave, onCancel, uploadImageAndGetUrl, isSubmitti
                                 required
                                 placeholder="Enter title"
                             />
-                            <div {...getRootProps()} className="dropzone border p-4 text-center">
+                            <div {...getRootProps()} className="dropzone border p-4 text-center rounded-lg cursor-pointer">
                                 <input {...getInputProps()} />
                                 {isDragActive ? (
                                     <p>Drop the files here...</p>
+                                ) : img ? (
+                                    <div className="relative">
+                                        <img src={img} alt="Preview" className="w-24 h-24 mx-auto" />
+                                        <button
+                                            onClick={handleRemoveImage}
+                                            type="button"
+                                            className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1 text-xs"
+                                            aria-label="Remove image"
+                                        >
+                                            ×
+                                        </button>
+                                    </div>
                                 ) : (
                                     <p>Drag & drop an image here, or click to select one</p>
                                 )}
                             </div>
-                            {img && (
-                                <div style={{ textAlign: 'center', marginTop: '10px' }}>
-                                    <img
-                                        src={img}
-                                        alt="Preview"
-                                        style={{ width: '100px', height: 'auto', borderRadius: '5px' }}
-                                    />
-                                </div>
-                            )}
                             <Input
                                 label="Price"
                                 value={price}
