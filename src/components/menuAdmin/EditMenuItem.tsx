@@ -106,12 +106,14 @@ const EditMenuItem = ({ item, onSave, onCancel, uploadImageAndGetUrl, isSubmitti
                                 required
                                 placeholder="Enter description"
                             />
-                            <Input
-                                label="Status"
+                            <select
                                 value={status}
                                 onChange={(e) => setStatus(e.target.value)}
-                                placeholder="Enter status"
-                            />
+                                className="p-2 border rounded-md"
+                            >
+                                <option value="available">Available</option>
+                                <option value="unavailable">Unavailable</option>
+                            </select>
                         </div>
                         <ModalFooter>
                             <Button color="primary" type="submit" disabled={isSubmitting}>
