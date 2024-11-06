@@ -1,75 +1,112 @@
-import { useState } from 'react';
-import DataTable from '../customComponent/DataTable';
+import React, { useState, useCallback } from 'react';
+import {
+    Table,
+    TableHeader,
+    TableColumn,
+    TableBody,
+    TableRow,
+    TableCell,
+    User,
+    Chip,
+    Tooltip,
+} from "@nextui-org/react";
+import { Button } from '@nextui-org/react';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 import AddMenuItem from './AddMenuItem';
 import EditMenuItem from './EditMenuItem';
 import { MenuItemType } from '../home/menuList/menuData';
 import { useMenuData } from '../../hooks/useMenuData';
-import { Button } from '@nextui-org/button';
+
+const statusColorMap: { [key: string]: "success" | "danger" | "warning" | "default" | "primary" | "secondary" } = {
+    available: "success",
+    unavailable: "danger",
+    limited: "warning",
+};
 
 const MenuCRUD = () => {
     const { menuItems, loading, addMenuItem, editMenuItem, deleteMenuItem, uploadImageAndGetUrl } = useMenuData();
     const [editingItem, setEditingItem] = useState<MenuItemType | null>(null);
-    const [isSubmitting, setIsSubmitting] = useState(false); // Status penyimpanan
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    // Fungsi untuk menangani sel tabel
+    const renderCell = useCallback((item: MenuItemType, columnKey: string) => {
+        const cellValue = item[columnKey as keyof MenuItemType];
+
+        switch (columnKey) {
+            case "title":
+                return (
+                    <User
+                        avatarProps={{ radius: "lg", src: item.img }}
+                        name={cellValue as string}
+                        description={item.description}
+                    />
+                );
+            case "price":
+                return <span className="font-semibold">Rp {cellValue}</span>;
+            case "status":
+                return (
+                    <Chip
+                        className="capitalize"
+                        color={statusColorMap[item.status] || "success"}
+                        size="sm"
+                        variant="flat"
+                    >
+                        {cellValue || 'N/A'}
+                    </Chip>
+                );
+            case "actions":
+                return (
+                    <div className="relative flex items-center gap-2">
+                        <Tooltip content="Edit">
+                            <span
+                                className="text-lg text-default-400 cursor-pointer active:opacity-50"
+                                onClick={() => setEditingItem(item)}
+                            >
+                                <FaEdit />
+                            </span>
+                        </Tooltip>
+                        <Tooltip color="danger" content="Delete">
+                            <span
+                                className="text-lg text-danger cursor-pointer active:opacity-50"
+                                onClick={() => deleteMenuItem(item.id!)}
+                            >
+                                <FaTrash />
+                            </span>
+                        </Tooltip>
+                    </div>
+                );
+            default:
+                return cellValue;
+        }
+    }, [setEditingItem, deleteMenuItem]);
 
     const columns = [
-        { Header: 'Title', accessor: 'title' },
-        { Header: 'Description', accessor: 'description' },
-        { Header: 'Price', accessor: 'price' },
-        { Header: 'Category', accessor: 'category' },
-        {
-            Header: 'Actions',
-            accessor: 'actions',
-            Cell: ({ row }: any) => (
-                <div>
-                    <Button
-                        onClick={() => setEditingItem(row.original)}
-                        className="text-sm bg-light-danger dark:bg-danger text-white dark:text-light mt-2 mb-2 ml-2 mr-2"
-                        radius="full"
-                        size="sm"
-                    >
-                        Edit
-                    </Button>
-                    
-                    <Button
-                        onClick={() => deleteMenuItem(row.original.id)}
-                        className="text-sm bg-light-warning dark:bg-warning text-white dark:text-light mt-2 mb-2 ml-2 mr-2"
-                        radius="full"
-                        size="sm"
-                    >
-                        Delete
-                    </Button>
-                </div>
-            ),
-        },
+        { name: "Title", uid: "title" },
+        { name: "Description", uid: "description" },
+        { name: "Price", uid: "price" },
+        { name: "Status", uid: "status" },
+        { name: "Actions", uid: "actions" },
     ];
-
-    const data = menuItems.map((item) => ({
-        id: item.id,
-        title: item.title,
-        description: item.description,
-        price: item.price,
-        category: item.category,
-    }));
 
     const handleAddItem = async (newItem: Partial<MenuItemType>) => {
         if (!newItem.title || !newItem.img || !newItem.price || !newItem.description) {
             alert("Please fill in all required fields.");
             return;
         }
-        setIsSubmitting(true); // Mulai proses penyimpanan
+        setIsSubmitting(true);
         await addMenuItem({
             ...newItem,
             status: newItem.status || 'available',
             category: newItem.category || 'coffee',
         } as MenuItemType);
-        setIsSubmitting(false); // Selesai penyimpanan
+        setIsSubmitting(false);
     };
 
     const handleEditItem = async (id: string, updatedItem: Partial<MenuItemType>) => {
-        setIsSubmitting(true); // Mulai proses pengeditan
+        setIsSubmitting(true);
         await editMenuItem(id, updatedItem);
-        setIsSubmitting(false); // Selesai pengeditan
-        setEditingItem(null); // Tutup form edit setelah selesai
+        setIsSubmitting(false);
+        setEditingItem(null);
     };
 
     if (loading) return <div>Loading menu items...</div>;
@@ -83,7 +120,7 @@ const MenuCRUD = () => {
                     onSave={handleEditItem}
                     onCancel={() => setEditingItem(null)}
                     uploadImageAndGetUrl={uploadImageAndGetUrl}
-                    isSubmitting={isSubmitting} // Kirim isSubmitting ke EditMenuItem
+                    isSubmitting={isSubmitting}
                 />
             ) : (
                 <div>
@@ -92,7 +129,25 @@ const MenuCRUD = () => {
                         uploadImageAndGetUrl={uploadImageAndGetUrl}
                         isSubmitting={isSubmitting} // Kirim isSubmitting ke AddMenuItem
                     />
-                    <DataTable columns={columns} data={data} />
+                    {/* Table Component */}
+                    <Table aria-label="Menu items table with custom cells">
+                        <TableHeader columns={columns}>
+                            {(column) => (
+                                <TableColumn key={column.uid} align={column.uid === "actions" ? "center" : "start"}>
+                                    {column.name}
+                                </TableColumn>
+                            )}
+                        </TableHeader>
+                        <TableBody items={menuItems}>
+                            {(item) => (
+                                <TableRow key={item.id}>
+                                    {(columnKey) => (
+                                        <TableCell>{renderCell(item, columnKey.toString())}</TableCell>
+                                    )}
+                                </TableRow>
+                            )}
+                        </TableBody>
+                    </Table>
                 </div>
             )}
         </div>
