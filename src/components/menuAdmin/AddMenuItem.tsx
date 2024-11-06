@@ -39,15 +39,16 @@ const AddMenuItem = ({ onAdd, uploadImageAndGetUrl }: AddMenuItemProps) => {
             return;
         }
 
-        const formattedPrice = parseFloat(price.replace('$', ''));
+        const formattedPrice = parseFloat(price.replace(/[^\d.]/g, '')); // Menghapus semua karakter kecuali angka dan titik desimal
         await onAdd({
             title,
-            img: imgUrl, // Menggunakan URL gambar dari Dropzone
-            price: `$${formattedPrice.toFixed(2)}`,
+            img: imgUrl,
+            price: `${formattedPrice.toFixed(2)}`, // Menyimpan angka dengan dua desimal
             description,
             status,
             category
         });
+
 
         setTitle('');
         setImgUrl('');
@@ -90,12 +91,6 @@ const AddMenuItem = ({ onAdd, uploadImageAndGetUrl }: AddMenuItemProps) => {
                     required
                     placeholder="Enter description"
                 />
-                {/* <Input
-                    label="Status"
-                    value={status}
-                    onChange={(e) => setStatus(e.target.value)}
-                    fullWidth
-                /> */}
                 <select
                     value={status}
                     onChange={(e) => setStatus(e.target.value)}
@@ -112,6 +107,7 @@ const AddMenuItem = ({ onAdd, uploadImageAndGetUrl }: AddMenuItemProps) => {
                     <option value="coffee">Coffee</option>
                     <option value="non-coffee">Non-Coffee</option>
                     <option value="milk">Milk</option>
+                    <option value="tea">Tea</option>
                 </select>
                 <Button type="submit" color="primary" fullWidth>
                     Add Item

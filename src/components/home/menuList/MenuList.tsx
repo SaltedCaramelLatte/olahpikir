@@ -14,13 +14,12 @@ interface MenuItemType {
 
 interface MenuListProps {
     title: string;
-    category: string; // Tambahkan kategori untuk memfilter data
+    category: string;
 }
 
 const MenuList = ({ title, category }: MenuListProps) => {
     const { menuItems, loading } = useMenuData();
 
-    // Filter item berdasarkan kategori yang diberikan
     const itemsToDisplay = menuItems.filter(item => item.category === category);
 
     if (loading) {

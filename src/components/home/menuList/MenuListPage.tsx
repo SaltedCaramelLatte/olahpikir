@@ -8,14 +8,13 @@ import { MenuItemType } from './menuData';
 
 const MenuListPage = () => {
     const { category } = useParams<{ category: string }>();
-    const { menuItems, loading } = useMenuData(); // Ambil data dari hook
+    const { menuItems, loading } = useMenuData(); 
     const navigate = useNavigate();
 
     useEffect(() => {
-        window.scrollTo(0, 0); // Scroll ke atas saat halaman dimuat
+        window.scrollTo(0, 0);
     }, []);
 
-    // Filter items berdasarkan kategori yang diterima dari parameter URL
     const itemsToDisplay: MenuItemType[] = menuItems.filter(
         (item) => item.category === category
     );
@@ -26,10 +25,8 @@ const MenuListPage = () => {
 
     return (
         <section className="flex flex-col items-center justify-center min-h-screen bg-light-background dark:bg-dark-background py-10 px-4 lg:px-20">
-            {/* Tombol Kembali */}
             <Button
                 onClick={() => navigate(-1)}
-                // color="light"
                 variant="faded"
                 className="self-start mb-6 text-light-text bg-light-secondary dark:text-dark-text dark:bg-dark-secondary rounded-full shadow-md hover:bg-light-accent dark:hover:bg-dark-accent transition duration-200"
             >

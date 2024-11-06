@@ -51,6 +51,7 @@ const MenuSection = () => {
     const coffeeItems = menuItems.filter(item => item.category === "coffee");
     const nonCoffeeItems = menuItems.filter(item => item.category === "non-coffee");
     const milkItems = menuItems.filter(item => item.category === "milk");
+    const teaItems = menuItems.filter(item => item.category === "tea");
 
     const renderMenuItems = (list: MenuItemType[], offset: number) => {
         return list.slice(0, 4).map((item, index) => (
@@ -73,6 +74,8 @@ const MenuSection = () => {
 
             <div className="w-full max-w-3xl">
                 <Tabs
+                    className="justify-center"
+                    placement="top"
                     aria-label="Dynamic tabs"
                     style={{ marginTop: '20px' }}
                     selectedKey={activeTab}
@@ -108,6 +111,17 @@ const MenuSection = () => {
                     <Tab key="milk" title="Milk">
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
                             {renderMenuItems(milkItems, coffeeItems.length + nonCoffeeItems.length)}
+                        </div>
+                        <Button
+                            onClick={handleMoreClick}
+                            className="mt-4 px-4 py-2 text-white bg-[#b45f33] rounded-full shadow-md hover:bg-[#9e4e29] transition duration-200"
+                        >
+                            More
+                        </Button>
+                    </Tab>
+                    <Tab key="tea" title="Tea">
+                        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-center w-full">
+                            {renderMenuItems(teaItems, coffeeItems.length + nonCoffeeItems.length + milkItems.length)}
                         </div>
                         <Button
                             onClick={handleMoreClick}

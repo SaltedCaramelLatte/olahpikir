@@ -13,27 +13,25 @@ interface EditMenuItemProps {
 
 const EditMenuItem = ({ item, onSave, onCancel, uploadImageAndGetUrl, isSubmitting }: EditMenuItemProps) => {
     const [title, setTitle] = useState(item.title);
-    const [img, setImg] = useState(item.img); // State untuk URL gambar
+    const [img, setImg] = useState(item.img);
     const [price, setPrice] = useState(item.price);
     const [description, setDescription] = useState(item.description);
     const [status, setStatus] = useState(item.status);
 
-    // Mengupdate state saat item berubah
     useEffect(() => {
         setTitle(item.title);
-        setImg(item.img); // Memastikan gambar lama termuat
+        setImg(item.img);
         setPrice(item.price);
         setDescription(item.description);
         setStatus(item.status);
     }, [item]);
 
-    // Fungsi untuk mengunggah gambar baru melalui Dropzone
     const onDrop = useCallback(async (acceptedFiles: File[]) => {
         const file = acceptedFiles[0];
         if (file) {
             const url = await uploadImageAndGetUrl(file);
             if (url) {
-                setImg(url); // Mengganti gambar lama dengan yang baru
+                setImg(url);
             }
         }
     }, [uploadImageAndGetUrl]);
@@ -43,10 +41,17 @@ const EditMenuItem = ({ item, onSave, onCancel, uploadImageAndGetUrl, isSubmitti
         accept: { 'image/*': ['.png', '.jpg', '.jpeg', '.gif'] },
     });
 
+    // Fungsi untuk membersihkan input harga dari karakter non-angka
+    const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value.replace(/[^\d.]/g, ''); // Menghapus semua karakter kecuali angka dan titik desimal
+        setPrice(value);
+    };
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (item.id) {
-            onSave(item.id, { title, img, price, description, status });
+            const formattedPrice = parseFloat(price).toFixed(2); // Pastikan angka dalam format dua desimal
+            onSave(item.id, { title, img, price: formattedPrice, description, status });
         } else {
             console.error("No ID found for item");
         }
@@ -81,7 +86,6 @@ const EditMenuItem = ({ item, onSave, onCancel, uploadImageAndGetUrl, isSubmitti
                                     <p>Drag & drop an image here, or click to select one</p>
                                 )}
                             </div>
-                            {/* Tampilkan gambar lama atau gambar baru yang diunggah */}
                             {img && (
                                 <div style={{ textAlign: 'center', marginTop: '10px' }}>
                                     <img
@@ -94,9 +98,9 @@ const EditMenuItem = ({ item, onSave, onCancel, uploadImageAndGetUrl, isSubmitti
                             <Input
                                 label="Price"
                                 value={price}
-                                onChange={(e) => setPrice(e.target.value)}
+                                onChange={handlePriceChange}
                                 required
-                                type="number"
+                                type="text"
                                 placeholder="Enter price"
                             />
                             <Input
