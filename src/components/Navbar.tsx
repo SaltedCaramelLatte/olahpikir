@@ -79,7 +79,7 @@ export default function AppNavbar() {
               variant="bordered"
               onClick={toggleMenu}
               aria-label={isMenuOpen ? "Close menu" : "Open menu"} // Menambahkan aria-label untuk aksesibilitas
-              className="text-secondary dark:text-dark-text hover:bg-light-accent dark:hover:bg-dark-accent"
+              className="text-light dark:text-dark-text hover:bg-light-accent dark:hover:bg-dark-accent"
             >
               {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
             </Button>
@@ -93,7 +93,7 @@ export default function AppNavbar() {
             {sections.map(section => (
               <DropdownItem
                 key={section.id}
-                className={`my-2 text-secondary dark:text-dark-text rounded-md transition-colors duration-200 ${window.location.hash === `#${section.id}` ? "bg-light text-white" : "hover:bg-light-accent dark:hover:bg-dark-accent"
+                className={`my-2 text-light dark:text-dark-text rounded-md transition-colors duration-200 ${window.location.hash === `#${section.id}` ? "bg-light text-white" : "hover:bg-light-accent dark:hover:bg-dark-accent"
                   }`}
                 onClick={() => handleSectionClick(section.id)}
                 style={{ padding: '8px 12px' }}

@@ -29,14 +29,14 @@ const MenuListPage = () => {
             {/* Tombol Kembali */}
             <Button
                 onClick={() => navigate(-1)}
-                color="primary"
+                // color="light"
                 variant="faded"
                 className="self-start mb-6 text-light-text bg-light-secondary dark:text-dark-text dark:bg-dark-secondary rounded-full shadow-md hover:bg-light-accent dark:hover:bg-dark-accent transition duration-200"
             >
                 ← Kembali
             </Button>
 
-            <h3 className="text-4xl font-bold text-primary dark:text-gray-200 mb-8 capitalize">
+            <h3 className="text-4xl font-bold text-light dark:text-gray-200 mb-8 capitalize">
                 {category} Menu
             </h3>
             <div className="w-full max-w-6xl grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-8">

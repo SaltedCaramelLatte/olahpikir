@@ -22,7 +22,7 @@ const Home = () => {
       >
         <GallerySection />
       </div>
-      <ReachMeSection />
+      {/* <ReachMeSection /> */}
     </div>
   );
 };

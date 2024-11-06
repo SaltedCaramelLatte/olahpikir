@@ -23,7 +23,7 @@ const Footer = () => {
                 shadow="sm"
             >
                 <CardBody>
-                    <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center">
+                    <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center p-4">
                         {/* Peta Google Maps dengan Sudut Melengkung */}
                         <div className="relative col-span-6 md:col-span-4">
                             <iframe

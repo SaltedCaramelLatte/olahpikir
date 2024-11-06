@@ -6,6 +6,7 @@ import { MenuItemType } from '../home/menuList/menuData';
 interface AddMenuItemProps {
     onAdd: (newItem: Partial<MenuItemType>) => Promise<void>;
     uploadImageAndGetUrl: (file: File) => Promise<string | null>;
+    isSubmitting: boolean;
 }
 
 const AddMenuItem = ({ onAdd, uploadImageAndGetUrl }: AddMenuItemProps) => {
@@ -89,12 +90,20 @@ const AddMenuItem = ({ onAdd, uploadImageAndGetUrl }: AddMenuItemProps) => {
                     required
                     placeholder="Enter description"
                 />
-                <Input
+                {/* <Input
                     label="Status"
                     value={status}
                     onChange={(e) => setStatus(e.target.value)}
                     fullWidth
-                />
+                /> */}
+                <select
+                    value={status}
+                    onChange={(e) => setStatus(e.target.value)}
+                    className="p-2 border rounded-md"
+                >
+                    <option value="available">Available</option>
+                    <option value="unavailable">Unavailable</option>
+                </select>
                 <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
