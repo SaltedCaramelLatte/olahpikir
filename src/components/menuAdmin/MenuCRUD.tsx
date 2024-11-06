@@ -112,8 +112,8 @@ const MenuCRUD = () => {
     if (loading) return <div>Loading menu items...</div>;
 
     return (
-        <div>
-            <h1>Menu Management</h1>
+        <div className='pt-20'>
+            <h1 className='text-3xl font-bold text-center mb-8'>Menu Items</h1>
             {editingItem ? (
                 <EditMenuItem
                     item={editingItem}
