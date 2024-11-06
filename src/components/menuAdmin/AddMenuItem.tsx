@@ -1,44 +1,55 @@
-import { useState } from 'react';
-import { MenuItemType } from '../home/menuList/menuData';
+import { useState, useCallback } from 'react';
+import { useDropzone } from 'react-dropzone';
 import { Input, Button } from "@nextui-org/react";
+import { MenuItemType } from '../home/menuList/menuData';
 
 interface AddMenuItemProps {
     onAdd: (newItem: Partial<MenuItemType>) => Promise<void>;
+    uploadImageAndGetUrl: (file: File) => Promise<string | null>;
 }
 
-const AddMenuItem = ({ onAdd }: AddMenuItemProps) => {
+const AddMenuItem = ({ onAdd, uploadImageAndGetUrl }: AddMenuItemProps) => {
     const [title, setTitle] = useState('');
-    const [img, setImg] = useState('');
+    const [imgUrl, setImgUrl] = useState(''); // Menyimpan URL gambar yang di-upload
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
     const [status, setStatus] = useState('available');
     const [category, setCategory] = useState('coffee');
 
+    const onDrop = useCallback(async (acceptedFiles: File[]) => {
+        const file = acceptedFiles[0];
+        if (file) {
+            const url = await uploadImageAndGetUrl(file);
+            if (url) {
+                setImgUrl(url); // Update URL gambar setelah berhasil di-upload
+            }
+        }
+    }, [uploadImageAndGetUrl]);
+
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({
+        onDrop,
+        accept: { 'image/*': ['.png', '.jpg', '.jpeg', '.gif'] },
+    });
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-
-        if (!title || !img || !price || !description) {
+        if (!title || !imgUrl || !price || !description) {
             alert("Please fill in all required fields.");
             return;
         }
 
         const formattedPrice = parseFloat(price.replace('$', ''));
-        if (isNaN(formattedPrice)) {
-            alert("Please enter a valid price.");
-            return;
-        }
-
-        await onAdd({ 
-            title, 
-            img, 
-            price: `$${formattedPrice.toFixed(2)}`, 
-            description, 
-            status, 
-            category 
+        await onAdd({
+            title,
+            img: imgUrl, // Menggunakan URL gambar dari Dropzone
+            price: `$${formattedPrice.toFixed(2)}`,
+            description,
+            status,
+            category
         });
 
         setTitle('');
-        setImg('');
+        setImgUrl('');
         setPrice('');
         setDescription('');
         setStatus('available');
@@ -56,17 +67,12 @@ const AddMenuItem = ({ onAdd }: AddMenuItemProps) => {
                     fullWidth
                     required
                     placeholder="Enter title"
-                    className="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text"
                 />
-                <Input
-                    label="Image URL"
-                    value={img}
-                    onChange={(e) => setImg(e.target.value)}
-                    fullWidth
-                    required
-                    placeholder="Enter image URL"
-                    className="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text"
-                />
+                <div {...getRootProps()} className="dropzone border p-4 text-center">
+                    <input {...getInputProps()} />
+                    {isDragActive ? <p>Drop the files here...</p> : <p>Drag & drop an image here, or click to select one</p>}
+                </div>
+                {imgUrl && <img src={imgUrl} alt="Preview" style={{ width: '100px', marginTop: '10px' }} />}
                 <Input
                     label="Price"
                     value={price}
@@ -74,7 +80,6 @@ const AddMenuItem = ({ onAdd }: AddMenuItemProps) => {
                     fullWidth
                     required
                     placeholder="Enter price"
-                    className="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text"
                 />
                 <Input
                     label="Description"
@@ -83,30 +88,23 @@ const AddMenuItem = ({ onAdd }: AddMenuItemProps) => {
                     fullWidth
                     required
                     placeholder="Enter description"
-                    className="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text"
                 />
                 <Input
                     label="Status"
                     value={status}
                     onChange={(e) => setStatus(e.target.value)}
                     fullWidth
-                    className="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text"
                 />
                 <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="p-2 border border-light-border dark:border-dark-border rounded-md bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text"
+                    className="p-2 border rounded-md"
                 >
                     <option value="coffee">Coffee</option>
                     <option value="non-coffee">Non-Coffee</option>
                     <option value="milk">Milk</option>
                 </select>
-                <Button
-                    type="submit"
-                    color="primary"
-                    fullWidth
-                    className="mt-4 bg-light-primary dark:bg-dark-primary hover:bg-light-secondary dark:hover:bg-dark-secondary"
-                >
+                <Button type="submit" color="primary" fullWidth>
                     Add Item
                 </Button>
             </form>

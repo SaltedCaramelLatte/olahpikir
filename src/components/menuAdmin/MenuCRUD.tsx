@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import DataTable from '../customComponent/DataTable'; // Sesuaikan path
+import DataTable from '../customComponent/DataTable';
 import AddMenuItem from './AddMenuItem';
 import EditMenuItem from './EditMenuItem';
 import { MenuItemType } from '../home/menuList/menuData';
@@ -7,7 +7,7 @@ import { useMenuData } from '../../hooks/useMenuData';
 import { Button } from '@nextui-org/button';
 
 const MenuCRUD = () => {
-    const { menuItems, loading, addMenuItem, editMenuItem, deleteMenuItem } = useMenuData();
+    const { menuItems, loading, addMenuItem, editMenuItem, deleteMenuItem, uploadImageAndGetUrl } = useMenuData();
     const [editingItem, setEditingItem] = useState<MenuItemType | null>(null);
 
     const columns = [
@@ -63,6 +63,7 @@ const MenuCRUD = () => {
                         setEditingItem(null);
                     }}
                     onCancel={() => setEditingItem(null)}
+                    uploadImageAndGetUrl={uploadImageAndGetUrl} // Pass uploadImageAndGetUrl ke EditMenuItem
                 />
             ) : (
                 <div>
@@ -78,6 +79,7 @@ const MenuCRUD = () => {
                                 alert("Please fill in all required fields.");
                             }
                         }}
+                        uploadImageAndGetUrl={uploadImageAndGetUrl} // Pass uploadImageAndGetUrl ke AddMenuItem
                     />
                     <DataTable columns={columns} data={data} />
                 </div>

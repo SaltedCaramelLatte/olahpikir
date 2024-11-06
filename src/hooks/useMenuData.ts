@@ -35,7 +35,7 @@ export const useMenuData = () => {
 
     const uploadImageAndGetUrl = async (file: File) => {
         const { data, error } = await supabase.storage
-            .from('menu_images')
+            .from('olahpikir')
             .upload(`public/${file.name}`, file);
 
         if (error) {
@@ -43,17 +43,17 @@ export const useMenuData = () => {
             return null;
         }
 
-        // Dapatkan URL publik dari gambar yang diunggah
         const { publicUrl } = supabase.storage
-            .from('menu_images')
+            .from('olahpikir')
             .getPublicUrl(`public/${file.name}`).data;
 
         return publicUrl;
     };
 
+
     useEffect(() => {
         fetchMenuItems();
     }, []);
 
-    return { menuItems, loading, addMenuItem, editMenuItem, deleteMenuItem };
+    return { menuItems, loading, addMenuItem, editMenuItem, deleteMenuItem, uploadImageAndGetUrl };
 };
