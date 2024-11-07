@@ -30,14 +30,17 @@ const MenuItem = ({ item, index, visible }: MenuItemProps) => {
                         className="w-full h-[300px] relative overflow-hidden rounded-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"
                     >
                         <CardHeader className="absolute z-10 top-3 left-3 flex-col items-start">
-                            <p className={`text-tiny uppercase font-bold ${item.status === 'New' ? 'text-green-500' : 'text-white/60'}`}>
+                            <p
+                                className={`text-tiny uppercase font-bold ${item.status === 'New' ? 'text-green-500 drop-shadow-[1px_1px_2px_rgba(0,0,0,0.7)]' : 'text-white/60 drop-shadow-[1px_1px_2px_rgba(255,255,255,0.7)]'}`}
+                            >
                                 {item.status}
                             </p>
-                            <h4 className="text-2xl font-medium text-white">
+                            <h4
+                                className="text-2xl font-medium text-white drop-shadow-[2px_2px_4px_rgba(0,0,0,0.7)]"
+                            >
                                 {item.title}
                             </h4>
                         </CardHeader>
-
                         <Image
                             removeWrapper
                             alt={item.title}
