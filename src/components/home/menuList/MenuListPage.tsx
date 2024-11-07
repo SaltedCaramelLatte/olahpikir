@@ -33,7 +33,7 @@ const MenuListPage = () => {
                 ← Kembali
             </Button>
 
-            <h3 className="text-4xl font-bold text-light dark:text-gray-200 mb-8 capitalize">
+            <h3 className="text-4xl font-bold font-bossa text-light dark:text-gray-200 mb-8 capitalize">
                 {category} Menu
             </h3>
             <div className="w-full max-w-6xl grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-8">
