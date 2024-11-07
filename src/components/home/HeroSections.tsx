@@ -31,7 +31,7 @@ const HeroSection = () => {
                     Pembayaran mudah dengan QRIS dan metode lainnya.
                 </p>
 
-                <div className="flex w-full justify-between items-center mt-4">
+                <div className="flex w-full justify-between items-center mt-4 px-4">
                     <Button
                         color="secondary"
                         size="md"

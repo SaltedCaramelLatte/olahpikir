@@ -5,9 +5,13 @@
 @layer base {
     @font-face {
         font-family: 'Bossa';
-        src: url(/assets/fonts/Bossa-Bold.dbe4b9ea.woff2) format('woff2');
+        src: url('./assets/fonts/Bossa-Bold.dbe4b9ea.woff2') format('woff2');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
     }
 }
+
 
 .hide-scrollbar::-webkit-scrollbar {
     display: none;
