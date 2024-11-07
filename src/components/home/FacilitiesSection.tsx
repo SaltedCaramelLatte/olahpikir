@@ -27,7 +27,7 @@ const FacilityCard = ({ icon: Icon, title, description }: FacilityCardProps) => 
 const FacilitiesSection = () => {
     return (
         <section className="py-10 bg-light-background dark:bg-dark-background text-center pt-24">
-            <h2 className="text-4xl font-bold text-light mb-8 dark:text-gray-200">Gallery</h2>
+            <h2 className="text-4xl font-bold text-light mb-8 dark:text-gray-200">Fasilitas Kami</h2>
             <div className="flex flex-col sm:flex-row justify-center gap-8">
                 <FacilityCard
                     icon={FaWifi}
