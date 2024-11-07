@@ -2,7 +2,7 @@
 import HeroSection from '@/components/home/HeroSections';
 import MenuSection from '@/components/home/MenuSection';
 import GallerySection from '@/components/home/GallerySection';
-import ReachMeSection from '@/components/ReachMeSection';
+import FacilitiesSection from '@/components/home/FacilitiesSection';
 
 const Home = () => {
   return (
@@ -11,6 +11,11 @@ const Home = () => {
         id="home"
       >
         <HeroSection />
+      </div>
+      <div
+        id="facility"
+      >
+        <FacilitiesSection />
       </div>
       <div
         id="menu"
@@ -22,7 +27,6 @@ const Home = () => {
       >
         <GallerySection />
       </div>
-      {/* <ReachMeSection /> */}
     </div>
   );
 };

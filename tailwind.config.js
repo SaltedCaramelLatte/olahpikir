@@ -50,11 +50,11 @@ export default {
         '.text-shadow-dark': {
           textShadow: '1px 1px 2px rgba(255,255,255,0.3)',
         },
-        // '.overflow-ellipsis': {
-        //   overflow: 'hidden',
-        //   textOverflow: 'ellipsis',
-        //   whiteSpace: 'nowrap',
-        // },
+        '.overflow-ellipsis': {
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
+        },
         '.hide-scrollbar': {
           '&::-webkit-scrollbar': {
             display: 'none',
