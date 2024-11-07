@@ -18,7 +18,7 @@ const HeroSection = () => {
     };
 
     return (
-        <section className="relative flex flex-col md:flex-row items-center justify-center min-h-screen bg-light-background dark:bg-dark-background pt-24 px-4 lg:px-20 px-4 sm:px-6 lg:px-8">
+        <section className="relative flex flex-col md:flex-row items-center justify-center min-h-screen bg-light-background dark:bg-dark-background pt-24 px-4 lg:px-20 px-4 sm:px-6 lg:px-8 lg:gap-x-10">
             <div className="flex flex-col items-start md:w-1/2 max-w-lg text-left md:ml-10">
                 <h1 className="font-bold font-bossa text-6xl sm:text-5xl lg:text-6xl text-light mb-4 leading-tight dark:text-gray-200">
                     olahpikir Cafe
@@ -30,7 +30,6 @@ const HeroSection = () => {
                 <p className="text-md sm:text-lg text-dark-secondary dark:text-light-secondary mb-4">
                     Pembayaran mudah dengan QRIS dan metode lainnya.
                 </p>
-
                 <div className="flex w-full justify-between items-center mt-4 px-2">
                     <Button
                         color="secondary"
@@ -50,7 +49,6 @@ const HeroSection = () => {
                         Ingin mengadakan Bazaar?
                     </Button>
                 </div>
-
             </div>
 
             <div className="relative z-10 md:w-1/2 flex justify-center mt-8 md:mt-0 md:mr-10 overflow-hidden rounded-xl shadow-lg">
@@ -63,6 +61,7 @@ const HeroSection = () => {
                 />
             </div>
         </section>
+
     );
 };
 
