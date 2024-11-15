@@ -1,7 +1,7 @@
 // src/hooks/useAuth.ts
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { supabase } from '../lib/supabaseClient';
-import { User } from '@supabase/supabase-js';
+import { User, Session } from '@supabase/supabase-js';
 
 interface AuthContextType {
   user: User | null;
@@ -16,11 +16,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const checkUser = async () => {
-      const { data } = await supabase.auth.getUser();
-      setUser(data.user ?? null);
+      // Mendapatkan sesi pengguna dari Supabase
+      const { data: { session } } = await supabase.auth.getSession();
+      setUser(session?.user ?? null);
     };
     checkUser();
 
+    // Listen untuk perubahan autentikasi
     const { data: listener } = supabase.auth.onAuthStateChange((_, session) => {
       setUser(session?.user ?? null);
     });
