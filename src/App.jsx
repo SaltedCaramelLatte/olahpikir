@@ -7,10 +7,9 @@ import Footer from './components/Footer';
 import MenuCRUD from './components/menuAdmin/MenuCRUD';
 import { AuthProvider } from './hooks/useAuth';
 import ProtectedRoute from './components/ProtectedRoute';
-import Login from './pages/Login';
 import { Outlet } from 'react-router-dom';
+import Login from './pages/LoginPage';
 
-// Layout component definition
 const Layout = () => {
   return (
     <div>
@@ -29,13 +28,20 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>
+            {/* Halaman Home */}
             <Route index element={<Home />} />
+            
+            {/* Rute Dinamis untuk Menu Kategori */}
             <Route path="menu/:category" element={<MenuListPage />} />
+
+            {/* Rute yang Dilindungi untuk Admin Menu */}
             <Route path="admin/menu" element={
               <ProtectedRoute>
                 <MenuCRUD />
               </ProtectedRoute>
             } />
+            
+            {/* Halaman Login */}
             <Route path="login" element={<Login />} />
           </Route>
         </Routes>

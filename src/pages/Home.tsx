@@ -7,24 +7,16 @@ import FacilitiesSection from '@/components/home/FacilitiesSection';
 const Home = () => {
   return (
     <div>
-      <div
-        id="home"
-      >
+      <div id="home">
         <HeroSection />
       </div>
-      <div
-        id="facility"
-      >
+      <div id="facility">
         <FacilitiesSection />
       </div>
-      <div
-        id="menu"
-      >
+      <div id="menu">
         <MenuSection />
       </div>
-      <div
-        id="gallery"
-      >
+      <div id="gallery">
         <GallerySection />
       </div>
     </div>
