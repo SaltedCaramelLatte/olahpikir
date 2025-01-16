@@ -2,12 +2,11 @@ import { Card, CardBody, Divider } from "@nextui-org/react";
 import ThemeToggle from "./ThemeToggle";
 
 const Footer = () => {
-    // Fallback data kontak
     const footer = {
         contact_email: "olahpikicafe@gmail.com",
         contact_phone: "+62 123 4567 890",
         contact_address: "Jl. Bumi 2, Gn. Sari, Kec. Rappocini, Kota Makassar, Sulawesi Selatan 90221",
-        maps_link: "https://maps.app.goo.gl/C6YBWnjp52rm9UmH9" // Tautan ke lokasi Google Maps
+        maps_link: "https://maps.app.goo.gl/C6YBWnjp52rm9UmH9" 
     };
     const currentYear = new Date().getFullYear();
 
@@ -24,7 +23,6 @@ const Footer = () => {
             >
                 <CardBody>
                     <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center p-4">
-                        {/* Peta Google Maps dengan Sudut Melengkung */}
                         <div className="relative col-span-6 md:col-span-4">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.491874647002!2d119.43887307498254!3d-5.185075694792437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbee33fbf6d357d%3A0xc11460d73df7aa4c!2sOlah%20Pikir%20Coffee!5e0!3m2!1sid!2sid!4v1730545239284!5m2!1sid!2sid"
@@ -39,7 +37,6 @@ const Footer = () => {
                             ></iframe>
                         </div>
 
-                        {/* Kontak Informasi */}
                         <div className="flex flex-col col-span-6 md:col-span-8">
                             <div className="flex flex-col gap-2">
                                 <p className="text-lg font-medium text-black dark:text-white">
@@ -69,7 +66,6 @@ const Footer = () => {
                 </CardBody>
             </Card>
 
-            {/* Footer Bawah */}
             <div className="flex justify-between items-center flex-col-reverse sm:flex-row text-center text-sm mt-5 px-8 space-y-4 sm:space-y-0">
                 <span className="text-gray-500 dark:text-gray-400">
                     &copy; {currentYear} olahpikir Cafe
@@ -78,7 +74,6 @@ const Footer = () => {
                     <ThemeToggle />
                 </div>
             </div>
-            {/* </section> */}
         </footer>
     );
 };

@@ -7,7 +7,7 @@ import { useMenuData } from "../../hooks/useMenuData";
 import { MenuItemType } from "./menuList/menuData";
 
 const MenuSection = () => {
-    const { menuItems, loading } = useMenuData(); // Ambil data dari Supabase
+    const { menuItems, loading } = useMenuData(); 
     const [activeTab, setActiveTab] = useState<string>("coffee");
     const [visibleItems, setVisibleItems] = useState<boolean[]>(Array(menuItems.length).fill(false));
     const observer = useRef<IntersectionObserver | null>(null);
@@ -47,7 +47,6 @@ const MenuSection = () => {
         return <div>Loading...</div>;
     }
 
-    // Filter data berdasarkan kategori
     const coffeeItems = menuItems.filter(item => item.category === "coffee");
     const nonCoffeeItems = menuItems.filter(item => item.category === "non-coffee");
     const milkItems = menuItems.filter(item => item.category === "milk");

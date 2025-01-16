@@ -1,4 +1,3 @@
-// components/home/menuList/MenuItem.tsx
 import { Card, CardHeader, CardFooter, Image, Button } from "@nextui-org/react";
 import { useState } from "react";
 import fallbackImage from "@/images/coffee.jpg"; // Import gambar fallback

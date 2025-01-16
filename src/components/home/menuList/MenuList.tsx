@@ -1,4 +1,3 @@
-// components/home/menuList/MenuList.tsx
 import { Spacer } from "@nextui-org/react";
 import MenuItem from "../MenuItem";
 import { useMenuData } from '../../../hooks/useMenuData';

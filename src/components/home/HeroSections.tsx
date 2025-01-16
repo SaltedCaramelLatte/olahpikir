@@ -5,7 +5,6 @@ import coffeeImage from "@/images/coffee.jpg";
 const HeroSection = () => {
     const [imageError, setImageError] = useState(false);
 
-    // Fungsi scroll ke section tertentu
     interface ScrollToSectionProps {
         id: string;
     }

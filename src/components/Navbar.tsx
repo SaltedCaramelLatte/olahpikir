@@ -35,14 +35,12 @@ export default function AppNavbar() {
   };
 
   const handleSectionClick = (id: string): void => {
-    // Jika pengguna berada di halaman yang berbeda, arahkan ke root path dengan hash
     if (window.location.pathname !== '/') {
-      window.location.href = `/#${id}`; // Kembali ke root dengan hash
+      window.location.href = `/#${id}`; 
     } else {
-      // Jika sudah di root path, scroll ke section yang diinginkan
       scrollToSection(id);
     }
-    setIsMenuOpen(false); // Tutup menu setelah mengklik item
+    setIsMenuOpen(false); 
   };
 
   return (

@@ -1,4 +1,3 @@
-// src/components/ProtectedRoute.tsx
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { ReactNode, useEffect, useState } from 'react';
@@ -24,11 +23,11 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   }, []);
 
   if (isLoading) {
-    return <p>Loading...</p>; // tampilkan loading selama pengecekan sesi
+    return <p>Loading...</p>; 
   }
 
   if (!user) {
-    // Redirect ke halaman login jika pengguna tidak ditemukan
+   
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 

@@ -1,10 +1,9 @@
 import { Card, CardHeader, Image } from "@nextui-org/react";
 
-// Data untuk setiap card, menyimpan title dan description
 const galleryData = [
   {
     title: "What to watch",
-    imageUrl: "https://via.placeholder.com/300", // Placeholder sementara
+    imageUrl: "https://via.placeholder.com/300", 
   },
   {
     title: "Plant a tree",
