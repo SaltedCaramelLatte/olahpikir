@@ -18,7 +18,7 @@
     "@nextui-org/tabs": "^2.0.37",
     "@nextui-org/theme": "^2.2.11",
     "@supabase/supabase-js": "^2.46.1",
-    "@tailwindcss/typography": "^0.5.15",
+    "@tailwindcss/typography": "^0.5.16",
     "framer-motion": "^11.11.10",
     "jquery": "^3.7.1",
     "react": "^18.3.1",
