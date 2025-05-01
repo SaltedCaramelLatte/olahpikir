@@ -1,11 +1,11 @@
 // src/components/home/menuList/menuData.ts
 import espressoImage from "@/images/coffee_p.jpg";
-import latteImage from "@/images/coffee.jpg";
-import cappuccinoImage from "@/images/coffee.jpg";
-import milkImage from "@/images/coffee.jpg";
-import orangeImage from "@/images/coffee.jpg";
-import tangerineImage from "@/images/coffee.jpg";
-import raspberryImage from "@/images/coffee.jpg";
+import latteImage from "@/images/wifiid.png";
+import cappuccinoImage from "@/images/wifiid.png";
+import milkImage from "@/images/wifiid.png";
+import orangeImage from "@/images/wifiid.png";
+import tangerineImage from "@/images/wifiid.png";
+import raspberryImage from "@/images/wifiid.png";
 
 export interface MenuItemType {
     id?: string; // Optional for new items

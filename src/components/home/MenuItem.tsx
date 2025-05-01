@@ -1,6 +1,6 @@
 import { Card, CardHeader, CardFooter, Image, Button } from "@nextui-org/react";
 import { useState } from "react";
-import fallbackImage from "@/images/coffee.jpg"; // Import gambar fallback
+import fallbackImage from "@/images/wifiid.png"; // Import gambar fallback
 
 interface MenuItemProps {
     item: {
