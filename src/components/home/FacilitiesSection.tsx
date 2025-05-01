@@ -16,8 +16,8 @@ const FacilityCard = ({ icon: Icon, title, description, className }: FacilityCar
                 <Icon className="text-4xl text-light-background dark:text-dark-background" />
             </CardHeader>
             <CardBody>
-                <h3 className="text-2xl font-bold font-bossa text-dark-text dark:text-light-text mb-2">{title}</h3>
-                <p className="text-dark-text dark:text-light-text mt-2 text-base leading-relaxed">
+                <h3 className="text-2xl font-bold font-bossa text-dark-text dark:text-dark-text mb-2">{title}</h3>
+                <p className="text-dark-text dark:text-dark-text mt-2 text-base leading-relaxed">
                     {description}
                 </p>
             </CardBody>
