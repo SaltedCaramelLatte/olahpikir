@@ -32,17 +32,17 @@ const FacilitiesSection = () => {
             <div className="max-w-[900px] mx-auto gap-4 grid grid-cols-12 px-4 sm:px-8">
                 <FacilityCard
                     icon={FaWifi}
-                    title="Wi-Fi Super Cepat 50 Mbps"
-                    description="Nikmati akses internet cepat hingga 50 Mbps untuk berbagai kebutuhan. Tempat yang sempurna untuk belajar, bekerja, atau sekadar menikmati waktu luang dengan streaming tanpa hambatan."
+                    title="WiFi.id Corner • 50 Mbps Stabil"
+                    description="Koneksi internet cepat dan stabil langsung dari WiFi.id. Ideal untuk meeting online, upload konten, atau maraton drama favorit tanpa buffering."
+                    className="col-span-12 sm:col-span-6"
+                />
+                <FacilityCard
+                    icon={FaTree}
+                    title="Ruang Terbuka Produktif"
+                    description="Area semi-outdoor dengan akses WiFi stabil, colokan listrik, dan tempat duduk ergonomis — mendukung aktivitas digitalmu di udara terbuka tanpa gangguan."
                     className="col-span-12 sm:col-span-6"
                 />
 
-                <FacilityCard
-                    icon={FaTree}
-                    title="Area Terbuka yang Nyaman"
-                    description="Rasakan suasana segar di area terbuka kami, ideal untuk berkumpul bersama teman atau menikmati waktu santai sambil menyeruput kopi favorit."
-                    className="col-span-12 sm:col-span-6"
-                />
             </div>
         </section>
     );
