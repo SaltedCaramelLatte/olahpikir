@@ -3,10 +3,10 @@ import ThemeToggle from "./ThemeToggle";
 
 const Footer = () => {
     const footer = {
-        contact_email: "olahpikicafe@gmail.com",
-        contact_phone: "+62 123 4567 890",
-        contact_address: "Jl. Sultan Hasanuddin No.182, Pandang Pandang, Kec. Somba Opu, Kabupaten Gowa, Sulawesi Selatan 92111",
-        maps_link: "https://maps.app.goo.gl/YCBHV6sriGPkDUwZ6" 
+        contact_email: "@gmail.com",
+        contact_phone: "+62 000 0000 000",
+        contact_address: "Jl. Sultan Hasanuddin No.180, Pandang Pandang, Kec. Somba Opu, Kabupaten Gowa, Sulawesi Selatan 90221",
+        maps_link: "https://maps.app.goo.gl/RLdbhm26ZJNu5iYg9" 
     };
     const currentYear = new Date().getFullYear();
 
@@ -68,7 +68,7 @@ const Footer = () => {
 
             <div className="flex justify-between items-center flex-col-reverse sm:flex-row text-center text-sm mt-5 px-8 space-y-4 sm:space-y-0">
                 <span className="text-gray-500 dark:text-gray-400">
-                    &copy; {currentYear} Ruangopi WiFi corner id
+                    &copy; {currentYear} Wico Gowa
                 </span>
                 <div className="flex items-center space-x-4 mt-3 sm:mt-0">
                     <ThemeToggle />

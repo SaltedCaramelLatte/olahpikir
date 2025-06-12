@@ -15,7 +15,7 @@ const ReachMeSection = () => {
                 className="fixed bottom-4 right-4 flex items-center gap-2 bg-light-primary dark:bg-dark-primary text-white rounded-full py-2 px-6 shadow-lg hover:bg-light-accent dark:hover:bg-dark-accent transition z-50 hover:scale-105 transform"
             >
                 <FaUser size={24} />
-                <span className="font-semibold">Who Made This?</span>
+                <span className="font-semibold">Contact uS</span>
             </button>
 
             <Modal
@@ -34,10 +34,10 @@ const ReachMeSection = () => {
                     </ModalHeader>
                     <ModalBody className="flex flex-col items-center space-y-4">
                         <p className="text-center text-light-text dark:text-dark-text">
-                            Contact me through the following platforms:
+                            Contact Us Fpr Asking Any Questions:
                         </p>
                         <div className="flex space-x-6 justify-center">
-                            <a href="https://linkedin.com/in/rahmat-079209247" target="_blank" rel="noopener noreferrer">
+                            {/* <a href="https://linkedin.com/in/rahmat-079209247" target="_blank" rel="noopener noreferrer"> */}
                                 <FaLinkedin className="text-light-secondary dark:text-dark-secondary text-4xl hover:text-light-primary dark:hover:text-dark-primary" />
                             </a>
                             <a href="https://wa.me/6282190303750" target="_blank" rel="noopener noreferrer">

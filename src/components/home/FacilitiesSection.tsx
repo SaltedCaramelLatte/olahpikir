@@ -28,7 +28,7 @@ const FacilityCard = ({ icon: Icon, title, description, className }: FacilityCar
 const FacilitiesSection = () => {
     return (
         <section className="py-10 bg-light-background dark:bg-dark-background text-center pt-24">
-            <h2 className=" font text-4xl font-bold text-light mb-8 dark:text-gray-200 font-bossa">Facilities</h2>
+            <h2 className=" font text-4xl font-bold text-light mb-8 dark:text-gray-200 font-bossa">Facility</h2>
             <div className="max-w-[900px] mx-auto gap-4 grid grid-cols-12 px-4 sm:px-8">
                 <FacilityCard
                     icon={FaWifi}

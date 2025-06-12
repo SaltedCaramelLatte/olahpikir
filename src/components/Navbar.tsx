@@ -49,7 +49,7 @@ export default function AppNavbar() {
       style={{ height: '60px' }}
     >
       <NavbarBrand className="ml-4">
-        <p className="font-bold text-light dark:text-light">Kedai Kopi</p>
+        <p className="font-bold text-light dark:text-light">Wico Gowa</p>
       </NavbarBrand>
 
       <NavbarContent className="hidden sm:flex gap-4 justify-center mx-auto" style={{ flex: 1 }}>
