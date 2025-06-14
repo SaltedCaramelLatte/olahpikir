@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from "@nextui-org/react";
-import { FaUser, FaLinkedin, FaWhatsapp, FaGithub } from "react-icons/fa";
+import { FaUser, FaLinkedin, FaWhatsapp, FaGithub, FaInstagram } from "react-icons/fa";
 
 const ReachMeSection = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +15,7 @@ const ReachMeSection = () => {
                 className="fixed bottom-4 right-4 flex items-center gap-2 bg-light-primary dark:bg-dark-primary text-white rounded-full py-2 px-6 shadow-lg hover:bg-light-accent dark:hover:bg-dark-accent transition z-50 hover:scale-105 transform"
             >
                 <FaUser size={24} />
-                <span className="font-semibold">Contact uS</span>
+                <span className="font-semibold">Contact Us</span>
             </button>
 
             <Modal
@@ -34,21 +34,21 @@ const ReachMeSection = () => {
                     </ModalHeader>
                     <ModalBody className="flex flex-col items-center space-y-4">
                         <p className="text-center text-light-text dark:text-dark-text">
-                            Contact Us For Asking Any Questions:
+                            Contact Us For Asking Any Questions
                         </p>
                         <div className="flex space-x-6 justify-center">
-                            <a href="https://linkedin.com/in/rahmat-079209247" target="_blank" rel="noopener noreferrer">
-                                <FaLinkedin className="text-light-secondary dark:text-dark-secondary text-4xl hover:text-light-primary dark:hover:text-dark-primary" />
+                            <a href="https://www.instagram.com/wico_gowa?igsh=MWxuOHpleHQzY3Rvaw%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
+                                <FaInstagram className="text-light-secondary dark:text-dark-secondary text-4xl hover:text-light-primary dark:hover:text-dark-primary" />
                             </a>
-                            <a href="https://wa.me/6282190303750" target="_blank" rel="noopener noreferrer">
+                            {/* <a href="https://wa.me/6282190303750" target="_blank" rel="noopener noreferrer">
                                 <FaWhatsapp className="text-green-500 text-4xl hover:text-green-700" />
-                            </a>
-                            <a href="https://github.com/RahmatRafiq" target="_blank" rel="noopener noreferrer">
+                            </a> */}
+                            {/* <a href="https://github.com/RahmatRafiq" target="_blank" rel="noopener noreferrer">
                                 <FaGithub className="text-gray-700 dark:text-dark-text text-4xl hover:text-black dark:hover:text-light-text" />
-                            </a>
+                            </a> */}
                         </div>
                         <p className="text-center text-light-text dark:text-dark-text">
-                            GitHub: <a href="https://github.com/RahmatRafiq" className="text-light-primary dark:text-dark-primary underline" target="_blank" rel="noopener noreferrer">Rahmat.</a>
+                            Email;: <a href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=wicogowa1@gmail.com" className="text-light-primary dark:text-dark-primary underline" target="_blank" rel="noopener noreferrer">Wico Gowa</a>
                         </p>
                     </ModalBody>
                     <ModalFooter className="text-light-primary dark:text-white flex justify-center">

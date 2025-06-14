@@ -3,7 +3,7 @@ import ThemeToggle from "./ThemeToggle";
 
 const Footer = () => {
     const footer = {
-        contact_email: "@gmail.com",
+        contact_email: "warkopgowa1@gmail.com",
         contact_phone: "+62 000 0000 000",
         contact_address: "Jl. Sultan Hasanuddin No.180, Pandang Pandang, Kec. Somba Opu, Kabupaten Gowa, Sulawesi Selatan 90221",
         maps_link: "https://maps.app.goo.gl/RLdbhm26ZJNu5iYg9" 
