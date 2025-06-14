@@ -25,6 +25,7 @@ const HeroSection = () => {
                 </h1>
                 <p className="text-xl sm:text-2xl text-dark-secondary dark:text-light-secondary mb-6">
                     Segelas kopi,colokan aman dan wifi kencang. Tempat yang ngerti kamu butuh kerja sambil nyeruput tenang.
+                    </p>
                 <p className="text-md sm:text-lg text-dark-secondary dark:text-light-secondary mb-4">
                     Bayar jadi lebih mudah dengan Qris
                 </p>
