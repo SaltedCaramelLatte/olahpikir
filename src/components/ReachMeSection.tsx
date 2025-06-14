@@ -34,7 +34,7 @@ const ReachMeSection = () => {
                     </ModalHeader>
                     <ModalBody className="flex flex-col items-center space-y-4">
                         <p className="text-center text-light-text dark:text-dark-text">
-                            Contact Us Fpr Asking Any Questions:
+                            Contact Us For Asking Any Questions:
                         </p>
                         <div className="flex space-x-6 justify-center">
                             <a href="https://linkedin.com/in/rahmat-079209247" target="_blank" rel="noopener noreferrer">
