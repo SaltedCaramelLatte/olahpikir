@@ -1,6 +1,5 @@
 import { Button, Image } from '@nextui-org/react';
 import { useState } from 'react';
-import coffeeImage from "@/images/wifiid.png";
 import logoImage from "@/images/Logopanjang.jpg";
 
 
@@ -46,7 +45,7 @@ const HeroSection = () => {
             <div className="relative z-10 md:w-1/2 flex justify-center mt-8 md:mt-0 md:mr-10 overflow-hidden rounded-xl shadow-lg">
                 <Image
                     src={logoImage}
-                    alt="Gelas kopi"
+                    alt=""
                     className="object-cover w-auto h-auto"
                     onError={() => setImageError(true)}
                     style={{ opacity: 1, visibility: 'visible' }}
